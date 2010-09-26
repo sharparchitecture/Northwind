@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace Northwind.Web.Controllers.Organization
+﻿namespace Northwind.Web.Controllers.Organization
 {
+    using System.Web.Mvc;
+
     public class OrganizationAreaRegistration : AreaRegistration
     {
         public override string AreaName
@@ -15,12 +15,9 @@ namespace Northwind.Web.Controllers.Organization
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "Organization_default",
-                "Organization/{controller}/{action}/{id}",
-                new { action = "Index", id = "" }
-                );
+                "Organization_default", 
+                "Organization/{controller}/{action}/{id}", 
+                new { action = "Index", id = string.Empty });
         }
     }
 }
-
-

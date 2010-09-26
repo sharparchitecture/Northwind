@@ -15,21 +15,20 @@ namespace Northwind.Data.NHibernateMaps
     {
         public AutoPersistenceModel Generate()
         {
-            return AutoMap.AssemblyOf<Category>(new NorthwindMappingConfiguration())
-                .Conventions.Setup(GetConventions())
-                .IgnoreBase<Entity>()
-                .IgnoreBase(typeof(EntityWithTypedId<>))
-                .UseOverridesFromAssemblyOf<AutoPersistenceModelGenerator>();
+            return
+                AutoMap.AssemblyOf<Category>(new NorthwindMappingConfiguration()).Conventions.Setup(
+                    this.GetConventions()).IgnoreBase<Entity>().IgnoreBase(typeof(EntityWithTypedId<>)).
+                    UseOverridesFromAssemblyOf<AutoPersistenceModelGenerator>();
         }
 
         private Action<IConventionFinder> GetConventions()
         {
             return c =>
-            {
-                c.Add<PrimaryKeyConvention>();
-                c.Add<HasManyConvention>();
-                c.Add<TableNameConvention>();
-            };
+                {
+                    c.Add<PrimaryKeyConvention>();
+                    c.Add<HasManyConvention>();
+                    c.Add<TableNameConvention>();
+                };
         }
     }
 }

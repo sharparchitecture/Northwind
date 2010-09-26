@@ -1,34 +1,34 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
-using SharpArch.Core.PersistenceSupport;
-using Northwind.Core;
-using Northwind.Data;
-using System.Diagnostics;
-using SharpArch.Core.DomainModel;
-using SharpArch.Data.NHibernate;
-using SharpArch.Testing.NUnit.NHibernate;
-
-namespace Tests.Northwind.Data
+﻿namespace Tests.Northwind.Data
 {
+    using global::Northwind.Core;
+
+    using NUnit.Framework;
+
+    using SharpArch.Core.PersistenceSupport;
+    using SharpArch.Data.NHibernate;
+    using SharpArch.Testing.NUnit.NHibernate;
+
     [TestFixture]
     [Category("DB Tests")]
     public class CategoryRepositoryTests : DatabaseRepositoryTestsBase
     {
+        private readonly IRepository<Category> categoryRepository = new Repository<Category>();
+
         [Test]
-        public void CanGetAllCategories() {
-            IList<Category> categories = categoryRepository.GetAll();
+        public void CanGetAllCategories()
+        {
+            var categories = this.categoryRepository.GetAll();
 
             Assert.That(categories, Is.Not.Null);
             Assert.That(categories, Is.Not.Empty);
         }
 
         [Test]
-        public void CanGetCategoryById() {
-            Category category = categoryRepository.Get(1);
+        public void CanGetCategoryById()
+        {
+            var category = this.categoryRepository.Get(1);
 
             Assert.That(category.CategoryName, Is.EqualTo("Beverages"));
         }
-
-        private IRepository<Category> categoryRepository = new Repository<Category>();
     }
 }

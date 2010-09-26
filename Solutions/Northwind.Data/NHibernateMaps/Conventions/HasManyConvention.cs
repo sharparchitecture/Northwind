@@ -1,11 +1,11 @@
-﻿using FluentNHibernate.Conventions;
-using FluentNHibernate.Mapping;
-
-namespace Northwind.Data.NHibernateMaps.Conventions
+﻿namespace Northwind.Data.NHibernateMaps.Conventions
 {
+    using FluentNHibernate.Conventions;
+    using FluentNHibernate.Conventions.Instances;
+
     public class HasManyConvention : IHasManyConvention
     {
-        public void Apply(FluentNHibernate.Conventions.Instances.IOneToManyCollectionInstance instance)
+        public void Apply(IOneToManyCollectionInstance instance)
         {
             instance.Key.Column(instance.EntityType.Name + "Fk");
         }

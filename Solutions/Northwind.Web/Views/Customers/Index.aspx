@@ -13,9 +13,9 @@
             </LayoutTemplate>
             <ItemTemplate>
                 <li>
-                    <%# ((Customer) Container.DataItem).ContactName %>
+                    <%#((Customer)Container.DataItem).ContactName%>
                     has placed
-                    <%# ((Customer) Container.DataItem).Orders.Count %>
+                    <%#((Customer)Container.DataItem).Orders.Count%>
                     orders. </li>
             </ItemTemplate>
         </asp:ListView>

@@ -1,30 +1,31 @@
-﻿using SharpArch.Testing.NUnit.NHibernate;
-using NUnit.Framework;
-using Northwind.Core;
-using Northwind.Core.DataInterfaces;
-using Northwind.Data;
-using SharpArch.Core.PersistenceSupport;
-using SharpArch.Data.NHibernate;
-using System;
-
-namespace Tests.Northwind.Data
+﻿namespace Tests.Northwind.Data
 {
+    using global::Northwind.Core;
+
+    using NUnit.Framework;
+
+    using SharpArch.Core.PersistenceSupport;
+    using SharpArch.Data.NHibernate;
+    using SharpArch.Testing.NUnit.NHibernate;
+
     [TestFixture]
     [Category("DB Tests")]
     public class ProxyEqualityTests : DatabaseRepositoryTestsBase
     {
+        private readonly IRepository<Region> regionRepository = new Repository<Region>();
+
+        private readonly IRepositoryWithTypedId<Territory, string> territoryRepository =
+            new RepositoryWithTypedId<Territory, string>();
+
         [Test]
-        public void ProxyEqualityTest() {
-            Territory territory = territoryRepository.Get("31406");
-            Region proxiedRegion = territory.RegionBelongingTo;
-            Region unproxiedRegion = regionRepository.Get(4);
+        public void ProxyEqualityTest()
+        {
+            var territory = this.territoryRepository.Get("31406");
+            var proxiedRegion = territory.RegionBelongingTo;
+            var unproxiedRegion = this.regionRepository.Get(4);
 
             Assert.IsTrue(proxiedRegion.Equals(unproxiedRegion));
             Assert.IsTrue(unproxiedRegion.Equals(proxiedRegion));
         }
-
-        private IRepositoryWithTypedId<Territory, string> territoryRepository = 
-            new RepositoryWithTypedId<Territory, string>();
-        private IRepository<Region> regionRepository = new Repository<Region>();
     }
 }

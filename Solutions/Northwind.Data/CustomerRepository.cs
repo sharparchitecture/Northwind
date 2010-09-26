@@ -1,17 +1,19 @@
-﻿using Northwind.Core.DataInterfaces;
-using Northwind.Core;
-using NHibernate;
-using SharpArch.Data.NHibernate;
-using NHibernate.Criterion;
-using System.Collections.Generic;
-
-namespace Northwind.Data
+﻿namespace Northwind.Data
 {
+    using System.Collections.Generic;
+
+    using NHibernate.Criterion;
+
+    using Northwind.Core;
+    using Northwind.Core.DataInterfaces;
+
+    using SharpArch.Data.NHibernate;
+
     public class CustomerRepository : NHibernateRepositoryWithTypedId<Customer, string>, ICustomerRepository
     {
-        public List<Customer> FindByCountry(string countryName) {
-            ICriteria criteria = Session.CreateCriteria(typeof(Customer))
-                .Add(Expression.Eq("Country", countryName));
+        public List<Customer> FindByCountry(string countryName)
+        {
+            var criteria = this.Session.CreateCriteria(typeof(Customer)).Add(Restrictions.Eq("Country", countryName));
 
             return criteria.List<Customer>() as List<Customer>;
         }

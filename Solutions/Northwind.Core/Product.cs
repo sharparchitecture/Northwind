@@ -1,19 +1,25 @@
-﻿using SharpArch.Core.DomainModel;
-using NHibernate.Validator.Constraints;
-
-namespace Northwind.Core
+﻿namespace Northwind.Core
 {
+    using NHibernate.Validator.Constraints;
+
+    using SharpArch.Core.DomainModel;
+
     public class Product : Entity
     {
-        public Product() { }
+        public Product()
+        {
+        }
 
         /// <summary>
-        /// Creates valid domain object
+        ///   Creates valid domain object
         /// </summary>
-        public Product(string name, Supplier supplier) {
-            Supplier = supplier;
-            ProductName = name;
+        public Product(string name, Supplier supplier)
+        {
+            this.Supplier = supplier;
+            this.ProductName = name;
         }
+
+        public virtual Category Category { get; set; }
 
         [DomainSignature]
         [NotNullNotEmpty]
@@ -22,7 +28,5 @@ namespace Northwind.Core
         [DomainSignature]
         [NotNull]
         public virtual Supplier Supplier { get; protected set; }
-
-        public virtual Category Category { get; set; }
     }
 }

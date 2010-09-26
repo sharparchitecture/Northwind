@@ -1,17 +1,21 @@
-﻿using NHibernate.Validator.Constraints;
-using SharpArch.Core.DomainModel;
-
-namespace Northwind.Core
+﻿namespace Northwind.Core
 {
+    using NHibernate.Validator.Constraints;
+
+    using SharpArch.Core.DomainModel;
+
     public class Category : Entity
     {
-        public Category() { }
+        public Category()
+        {
+        }
 
         /// <summary>
-        /// Creates valid domain object
+        ///   Creates valid domain object
         /// </summary>
-        public Category(string name) {
-            CategoryName = name;
+        public Category(string name)
+        {
+            this.CategoryName = name;
         }
 
         [DomainSignature]

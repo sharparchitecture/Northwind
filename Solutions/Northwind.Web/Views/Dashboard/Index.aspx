@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<Northwind.ApplicationServices.DashboardService.DashboardSummaryDto>" %>
-<%@ Import Namespace="Northwind.Core" %>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2>Suppliers Carrying Most/Fewest Products</h2>
@@ -21,12 +20,15 @@
             </tr>
         </thead>
         <tbody>
-            <% foreach (Supplier supplier in ViewData.Model.SuppliersCarryingMostProducts) { %>
+            <%
+                foreach (var supplier in this.ViewData.Model.SuppliersCarryingMostProducts)
+                {%>
                 <tr>
-                    <td><%= supplier.CompanyName %></td>
-                    <td><%= supplier.Products.Count %></td>
+                    <td><%=supplier.CompanyName%></td>
+                    <td><%=supplier.Products.Count%></td>
                 </tr>
-            <% }%>
+            <%
+                }%>
         </tbody>
     </table>
 
@@ -40,12 +42,15 @@
             </tr>
         </thead>
         <tbody>
-            <% foreach (Supplier supplier in ViewData.Model.SuppliersCarryingFewestProducts) { %>
+            <%
+                foreach (var supplier in this.ViewData.Model.SuppliersCarryingFewestProducts)
+                {%>
                 <tr>
-                    <td><%= supplier.CompanyName %></td>
-                    <td><%= supplier.Products.Count %></td>
+                    <td><%=supplier.CompanyName%></td>
+                    <td><%=supplier.Products.Count%></td>
                 </tr>
-            <% }%>
+            <%
+                }%>
         </tbody>
     </table>
 </asp:Content>

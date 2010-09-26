@@ -1,15 +1,15 @@
-﻿using FluentNHibernate.Automapping;
-using Northwind.Core;
-using FluentNHibernate.Automapping.Alterations;
-
-namespace Northwind.Data.NHibernateMappings
+﻿namespace Northwind.Data.NHibernateMappings
 {
+    using FluentNHibernate.Automapping;
+    using FluentNHibernate.Automapping.Alterations;
+
+    using Northwind.Core;
+
     public class OrderMap : IAutoMappingOverride<Order>
     {
-        public void Override(AutoMapping<Order> mapping) {
-            mapping.Id(x => x.Id, "OrderID")
-                .UnsavedValue(0)
-                .GeneratedBy.Identity();
+        public void Override(AutoMapping<Order> mapping)
+        {
+            mapping.Id(x => x.Id, "OrderID").UnsavedValue(0).GeneratedBy.Identity();
 
             mapping.Map(x => x.ShipToName, "ShipName");
 

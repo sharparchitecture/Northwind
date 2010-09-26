@@ -1,46 +1,53 @@
-﻿using System.Web.Mvc;
-using Northwind.Wcf;
-using System.ServiceModel;
-using Northwind.WcfServices;
-using System;
-using Northwind.Wcf.Dtos;
-using System.Collections.Generic;
-using SharpArch.Core;
-
-namespace Northwind.Web.Controllers
+﻿namespace Northwind.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ServiceModel;
+    using System.Web.Mvc;
+
+    using Northwind.Wcf;
+    using Northwind.Wcf.Dtos;
+
+    using SharpArch.Core;
+
     public class TerritoriesController : Controller
     {
-        public TerritoriesController(ITerritoriesWcfService territoriesWcfService) {
+        private readonly ITerritoriesWcfService territoriesWcfService;
+
+        public TerritoriesController(ITerritoriesWcfService territoriesWcfService)
+        {
             Check.Require(territoriesWcfService != null, "territoriesWcfService may not be null");
 
             this.territoriesWcfService = territoriesWcfService;
         }
 
-        public ActionResult Index() {
+        public ActionResult Index()
+        {
             IList<TerritoryDto> territories = null;
 
             // WCF service closing advice taken from http://msdn.microsoft.com/en-us/library/aa355056.aspx
             // As alternative to this verbose-ness, use the SharpArch.WcfClient.Castle.WcfSessionFacility
             // for automatically closing the WCF service.
-            try {
-                territories = territoriesWcfService.GetTerritories();
-                territoriesWcfService.Close();
+            try
+            {
+                territories = this.territoriesWcfService.GetTerritories();
+                this.territoriesWcfService.Close();
             }
-            catch (CommunicationException) {
-                territoriesWcfService.Abort();
+            catch (CommunicationException)
+            {
+                this.territoriesWcfService.Abort();
             }
-            catch (TimeoutException) {
-                territoriesWcfService.Abort();
+            catch (TimeoutException)
+            {
+                this.territoriesWcfService.Abort();
             }
-            catch (Exception) {
-                territoriesWcfService.Abort();
+            catch (Exception)
+            {
+                this.territoriesWcfService.Abort();
                 throw;
             }
 
             return View(territories);
         }
-
-        private readonly ITerritoriesWcfService territoriesWcfService;
     }
 }

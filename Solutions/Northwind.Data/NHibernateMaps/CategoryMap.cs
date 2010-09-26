@@ -1,25 +1,18 @@
-﻿using System;
-using Northwind.Core;
-using FluentNHibernate;
-using FluentNHibernate.Mapping;
-using SharpArch.Data.NHibernate.FluentNHibernate;
-
-namespace Northwind.Data.NHibernateMappings
+﻿namespace Northwind.Data.NHibernateMappings
 {
+    using FluentNHibernate.Mapping;
+
+    using Northwind.Core;
+
     public class CategoryMap : ClassMap<Category>
     {
-        public CategoryMap() {
-            Table("Categories");
+        public CategoryMap()
+        {
+            this.Table("Categories");
 
-            Id(x => x.Id, "CategoryID")
-                .UnsavedValue(0)
-                .GeneratedBy.Identity();
-            
-            Map(x => x.CategoryName, "CategoryName");
+            this.Id(x => x.Id, "CategoryID").UnsavedValue(0).GeneratedBy.Identity();
+
+            this.Map(x => x.CategoryName, "CategoryName");
         }
-
-        #region IMapGenerator Members
-
-        #endregion
     }
 }

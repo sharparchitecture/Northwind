@@ -5,6 +5,7 @@
 
 	<h1>Edit Employee</h1>
 
-	<% Html.RenderPartial("EmployeeForm", ViewData); %>
+	<%
+	    this.Html.RenderPartial("EmployeeForm", this.ViewData);%>
 
 </asp:Content>

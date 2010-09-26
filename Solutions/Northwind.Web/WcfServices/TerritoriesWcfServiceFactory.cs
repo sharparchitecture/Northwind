@@ -1,18 +1,20 @@
-﻿using Northwind.Wcf;
-using System.ServiceModel;
-using Northwind.WcfServices;
-using System.Configuration;
-
-namespace Northwind.Web.WcfServices
+﻿namespace Northwind.Web.WcfServices
 {
+    using System.Configuration;
+    using System.ServiceModel;
+
+    using Northwind.Wcf;
+    using Northwind.WcfServices;
+
     public class TerritoriesWcfServiceFactory
     {
-        public ITerritoriesWcfService Create() {
-            EndpointAddress address = new EndpointAddress(
-                // I see the below as a magic string; I typically like to move these to a 
-                // web.config reader to consolidate the app setting names
+        public ITerritoriesWcfService Create()
+        {
+            // I see the below as a magic string; I typically like to move these to a 
+            // web.config reader to consolidate the app setting names
+            var address = new EndpointAddress(
                 ConfigurationManager.AppSettings["territoryWcfServiceUri"]);
-            WSHttpBinding binding = new WSHttpBinding();
+            var binding = new WSHttpBinding();
 
             return new TerritoriesWcfServiceClient(binding, address);
         }
