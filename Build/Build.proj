@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <AssembliesToTestWithNUnit Include="$(SolutionsPath)\Northwind.Tests\bin\Release\Northwind.Tests.dll;" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageFiles Include="$(WebAppPath)\**\*.*"
                   Exclude="$(WebAppPath)\**\*.cs;
                              $(WebAppPath)\**\*.csproj;
@@ -44,7 +48,7 @@
 
   <Target Name="RunTests"
       DependsOnTargets="Build;
-                        " />
+                        RunNUnitTests;" />
 
   <Target Name="PackageArtefacts"
           DependsOnTargets="RunTests;
