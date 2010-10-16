@@ -10,6 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <TemplifyTokens Include="Northwind=__NAME__" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TemplifyPath>$(SolutionsPath)</TemplifyPath>
+    <TemplifyPackageName>Sharp Architecture</TemplifyPackageName>
+    <TemplifyPackageAuthor>Sharp Architecture Development Team</TemplifyPackageAuthor>
+    <TemplifyPackageVersion>$(GlobalBuildVersionNumber)</TemplifyPackageVersion>
+    <TemplifyPackageRepositoryPath>$(DropsPath)\$(GlobalBuildVersionNumber)</TemplifyPackageRepositoryPath>
+  </PropertyGroup>
+
+  <ItemGroup>
     <AssembliesToTestWithNUnit Include="$(SolutionsPath)\Northwind.Tests\bin\Release\Northwind.Tests.dll;" />
   </ItemGroup>
   
@@ -53,8 +65,9 @@
                         RunNUnitTests;" />
 
   <Target Name="PackageArtefacts"
-          DependsOnTargets="RunTests;
+          DependsOnTargets="Build;
                             Package;
+                            Templify;
                             BuildSuccess" />
 
 </Project>
