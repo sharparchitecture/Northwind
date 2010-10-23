@@ -3,9 +3,9 @@
     using System.Collections.Generic;
     using System.Diagnostics;
 
-    using global::Northwind.Core;
-    using global::Northwind.Core.DataInterfaces;
-    using global::Northwind.Data;
+    using global::Northwind.Domain;
+    using global::Northwind.Domain.Contracts;
+    using global::Northwind.Infrastructure;
 
     using NUnit.Framework;
 

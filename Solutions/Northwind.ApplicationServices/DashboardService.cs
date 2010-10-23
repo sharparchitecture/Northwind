@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
 
-    using Northwind.Core;
-    using Northwind.Core.DataInterfaces;
+    using Northwind.Domain;
+    using Northwind.Domain.Contracts;
 
     using SharpArch.Core;
 

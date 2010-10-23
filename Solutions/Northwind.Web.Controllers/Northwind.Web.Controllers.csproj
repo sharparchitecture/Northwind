@@ -74,9 +74,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Common\AssemblyVersion.cs">
-      <Link>Properties\AssemblyVersion.cs</Link>
-    </Compile>
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
@@ -96,9 +93,9 @@
       <Project>{DDD17CE0-17DC-4AA3-8CA7-D9B0F8D5E87C}</Project>
       <Name>Northwind.ApplicationServices</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Northwind.Core\Northwind.Core.csproj">
-      <Project>{968B265E-AF3B-4153-B996-6EC4E83D9616}</Project>
-      <Name>Northwind.Core</Name>
+    <ProjectReference Include="..\Northwind.Domain\Northwind.Domain.csproj">
+      <Project>{A412F40A-805B-49C6-8F3B-C6F0B4D57EFE}</Project>
+      <Name>Northwind.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Northwind.Wcf\Northwind.Wcf.csproj">
       <Project>{7AB75E1D-30D2-4DF5-A2E6-03916FB24BBA}</Project>

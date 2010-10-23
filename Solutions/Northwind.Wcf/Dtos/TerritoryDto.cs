@@ -1,8 +1,8 @@
-﻿namespace Northwind.Wcf.Dtos
+﻿namespace Northwind.WcfServices.Dtos
 {
     using System.Collections.Generic;
 
-    using Northwind.Core;
+    using Northwind.Domain;
 
     public class TerritoryDto
     {

@@ -4,11 +4,12 @@ namespace Northwind.Web.Controllers.Organization
     using System.Linq;
     using System.Web.Mvc;
 
-    using Northwind.Core;
-    using Northwind.Core.Organization;
+    using Northwind.Domain;
+    using Northwind.Domain.Organization;
 
     using SharpArch.Core;
     using SharpArch.Core.PersistenceSupport;
+    using SharpArch.Web.ModelBinder;
     using SharpArch.Web.NHibernate;
 
     [HandleError]

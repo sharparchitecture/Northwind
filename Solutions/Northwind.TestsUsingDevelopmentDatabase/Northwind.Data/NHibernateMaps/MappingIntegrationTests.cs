@@ -1,6 +1,6 @@
 ﻿namespace Tests.Northwind.Data.NHibernateMaps
 {
-    using global::Northwind.Data.NHibernateMaps;
+    using global::Northwind.Infrastructure.NHibernateMaps;
 
     using NHibernate;
     using NHibernate.Cfg;

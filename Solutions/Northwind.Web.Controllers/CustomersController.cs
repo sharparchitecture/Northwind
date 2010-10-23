@@ -2,8 +2,8 @@
 {
     using System.Web.Mvc;
 
-    using Northwind.Core;
-    using Northwind.Core.DataInterfaces;
+    using Northwind.Domain;
+    using Northwind.Domain.Contracts;
 
     using SharpArch.Core;
     using SharpArch.Web.NHibernate;

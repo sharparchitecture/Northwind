@@ -7,7 +7,6 @@
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
 
-    using Northwind.Wcf;
     using Northwind.WcfServices;
     using Northwind.Web.WcfServices;
 
@@ -39,8 +38,8 @@
         private static void AddCustomRepositoriesTo(IWindsorContainer container)
         {
             container.Register(
-                AllTypes.Pick().FromAssemblyNamed("Northwind.Data").WithService.FirstNonGenericCoreInterface(
-                    "Northwind.Core"));
+                AllTypes.Pick().FromAssemblyNamed("Northwind.Infrastructure").WithService.FirstNonGenericCoreInterface(
+                    "Northwind.Domain"));
         }
 
         private static void AddGenericRepositoriesTo(IWindsorContainer container)

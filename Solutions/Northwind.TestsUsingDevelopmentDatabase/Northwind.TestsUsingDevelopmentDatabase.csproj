@@ -73,9 +73,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Common\AssemblyVersion.cs">
-      <Link>Properties\AssemblyVersion.cs</Link>
-    </Compile>
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
@@ -98,13 +95,13 @@
     <Content Include="_README.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Northwind.Core\Northwind.Core.csproj">
-      <Project>{968B265E-AF3B-4153-B996-6EC4E83D9616}</Project>
-      <Name>Northwind.Core</Name>
+    <ProjectReference Include="..\Northwind.Domain\Northwind.Domain.csproj">
+      <Project>{A412F40A-805B-49C6-8F3B-C6F0B4D57EFE}</Project>
+      <Name>Northwind.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Northwind.Data\Northwind.Data.csproj">
-      <Project>{AAB1B13C-653C-4764-9360-4DA67F4CC959}</Project>
-      <Name>Northwind.Data</Name>
+    <ProjectReference Include="..\Northwind.Infrastructure\Northwind.Infrastructure.csproj">
+      <Project>{0F2F3AAF-6486-4472-B92B-54EDB15095AA}</Project>
+      <Name>Northwind.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

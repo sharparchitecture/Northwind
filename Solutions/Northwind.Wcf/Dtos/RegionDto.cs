@@ -1,6 +1,6 @@
-﻿namespace Northwind.Wcf.Dtos
+﻿namespace Northwind.WcfServices.Dtos
 {
-    using Northwind.Core;
+    using Northwind.Domain;
 
     /// <summary>
     ///   DTO for a region entity.

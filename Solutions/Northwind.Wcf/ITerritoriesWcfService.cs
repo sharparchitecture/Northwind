@@ -1,9 +1,9 @@
-﻿namespace Northwind.Wcf
+﻿namespace Northwind.WcfServices
 {
     using System.Collections.Generic;
     using System.ServiceModel;
 
-    using Northwind.Wcf.Dtos;
+    using Northwind.WcfServices.Dtos;
 
     using SharpArch.Wcf;
 

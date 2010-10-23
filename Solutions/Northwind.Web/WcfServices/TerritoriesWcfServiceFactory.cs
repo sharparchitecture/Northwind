@@ -3,7 +3,6 @@
     using System.Configuration;
     using System.ServiceModel;
 
-    using Northwind.Wcf;
     using Northwind.WcfServices;
 
     public class TerritoriesWcfServiceFactory

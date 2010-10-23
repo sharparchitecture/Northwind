@@ -10,7 +10,7 @@
 
     using Microsoft.Practices.ServiceLocation;
 
-    using Northwind.Data.NHibernateMaps;
+    using Northwind.Infrastructure.NHibernateMaps;
     using Northwind.Wcf.Web.CastleWindsor;
 
     using SharpArch.Data.NHibernate;

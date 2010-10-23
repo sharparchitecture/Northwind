@@ -1,6 +1,6 @@
 ﻿namespace Tests.Northwind.Data.Organization
 {
-    using global::Northwind.Core.Organization;
+    using global::Northwind.Domain.Organization;
 
     using NUnit.Framework;
 

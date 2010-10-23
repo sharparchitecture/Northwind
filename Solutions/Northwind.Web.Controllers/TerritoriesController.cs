@@ -5,8 +5,8 @@
     using System.ServiceModel;
     using System.Web.Mvc;
 
-    using Northwind.Wcf;
-    using Northwind.Wcf.Dtos;
+    using Northwind.WcfServices;
+    using Northwind.WcfServices.Dtos;
 
     using SharpArch.Core;
 

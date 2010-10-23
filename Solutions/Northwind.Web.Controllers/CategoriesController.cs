@@ -2,7 +2,7 @@
 {
     using System.Web.Mvc;
 
-    using Northwind.Core;
+    using Northwind.Domain;
 
     using SharpArch.Core;
     using SharpArch.Core.PersistenceSupport;

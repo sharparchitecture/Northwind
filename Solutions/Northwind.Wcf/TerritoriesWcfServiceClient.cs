@@ -4,8 +4,7 @@
     using System.ServiceModel;
     using System.ServiceModel.Channels;
 
-    using Northwind.Wcf;
-    using Northwind.Wcf.Dtos;
+    using Northwind.WcfServices.Dtos;
 
     /// <summary>
     ///   Provides a strongly typed client proxy to use the WCF service without having to configure 

@@ -105,9 +105,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Common\AssemblyVersion.cs">
-      <Link>Properties\AssemblyVersion.cs</Link>
-    </Compile>
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
@@ -121,9 +118,9 @@
     <Content Include="NHibernate.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Northwind.Data\Northwind.Data.csproj">
-      <Project>{AAB1B13C-653C-4764-9360-4DA67F4CC959}</Project>
-      <Name>Northwind.Data</Name>
+    <ProjectReference Include="..\Northwind.Infrastructure\Northwind.Infrastructure.csproj">
+      <Project>{0F2F3AAF-6486-4472-B92B-54EDB15095AA}</Project>
+      <Name>Northwind.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Northwind.Wcf\Northwind.Wcf.csproj">
       <Project>{7AB75E1D-30D2-4DF5-A2E6-03916FB24BBA}</Project>

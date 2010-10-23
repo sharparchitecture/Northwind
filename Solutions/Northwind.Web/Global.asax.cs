@@ -16,7 +16,7 @@
 
     using MvcContrib.Castle;
 
-    using Northwind.Data.NHibernateMaps;
+    using Northwind.Infrastructure.NHibernateMaps;
     using Northwind.Web.CastleWindsor;
     using Northwind.Web.Controllers;
 
@@ -102,7 +102,7 @@
             NHibernateSession.ConfigurationCache = new NHibernateConfigurationFileCache(new[] { "Northwind.Core" });
             NHibernateSession.Init(
                 this.webSessionStorage, 
-                new[] { this.Server.MapPath("~/bin/Northwind.Data.dll") }, 
+                new[] { this.Server.MapPath("~/bin/Northwind.Infrastructure.dll") }, 
                 new AutoPersistenceModelGenerator().Generate(), 
                 this.Server.MapPath("~/NHibernate.config"));
         }

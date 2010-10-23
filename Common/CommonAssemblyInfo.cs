@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyCompany("Sharp Architecture Development Team")]
 [assembly: AssemblyProduct("Sharp Architecture Northwind Sample")]
-[assembly: AssemblyCopyright("Copyright © Sharp Architecture Development Team 2009")]
+[assembly: AssemblyCopyright("Copyright © Sharp Architecture Development Team 2009, 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

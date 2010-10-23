@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Territories via WCF" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<IEnumerable<Northwind.Wcf.Dtos.TerritoryDto>>" %>
+    Inherits="System.Web.Mvc.ViewPage<IEnumerable<Northwind.WcfServices.Dtos.TerritoryDto>>" %>
+<%@ Import Namespace="Northwind.Wcf.Dtos" %>
+<%@ Import Namespace="Northwind.WcfServices.Dtos" %>
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2>Territories Pulled from WCF Service</h2>

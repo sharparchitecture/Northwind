@@ -97,9 +97,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Common\AssemblyVersion.cs">
-      <Link>Properties\AssemblyVersion.cs</Link>
-    </Compile>
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
@@ -110,10 +107,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Northwind.Data\Northwind.Data.csproj">
-      <Project>{AAB1B13C-653C-4764-9360-4DA67F4CC959}</Project>
-      <Name>Northwind.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Northwind.Web.Controllers\Northwind.Web.Controllers.csproj">
       <Project>{4278C4DC-E2A8-4FB4-8172-82FB03E7DDF9}</Project>
       <Name>Northwind.Web.Controllers</Name>

@@ -1,6 +1,6 @@
 ﻿namespace Tests.Northwind.Data
 {
-    using global::Northwind.Core;
+    using global::Northwind.Domain;
 
     using NUnit.Framework;
 

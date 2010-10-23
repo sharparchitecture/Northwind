@@ -1,5 +1,5 @@
 <%@ Page Title="Employees" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-	Inherits="System.Web.Mvc.ViewPage<IEnumerable<Northwind.Core.Organization.Employee>>" %>
+	Inherits="System.Web.Mvc.ViewPage<IEnumerable<Northwind.Domain.Organization.Employee>>" %>
 <%@ Import Namespace="Northwind.Web.Controllers" %>
 <%@ Import Namespace="Northwind.Web.Controllers.Organization" %>
 

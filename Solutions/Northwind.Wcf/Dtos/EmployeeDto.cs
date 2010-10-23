@@ -1,6 +1,6 @@
-﻿namespace Northwind.Wcf.Dtos
+﻿namespace Northwind.WcfServices.Dtos
 {
-    using Northwind.Core.Organization;
+    using Northwind.Domain.Organization;
 
     public class EmployeeDto
     {

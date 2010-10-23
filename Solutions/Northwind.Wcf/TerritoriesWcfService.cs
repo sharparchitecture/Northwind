@@ -1,9 +1,9 @@
-﻿namespace Northwind.Wcf
+﻿namespace Northwind.WcfServices
 {
     using System.Collections.Generic;
 
-    using Northwind.Core;
-    using Northwind.Wcf.Dtos;
+    using Northwind.Domain;
+    using Northwind.WcfServices.Dtos;
 
     using SharpArch.Core;
     using SharpArch.Core.PersistenceSupport;
