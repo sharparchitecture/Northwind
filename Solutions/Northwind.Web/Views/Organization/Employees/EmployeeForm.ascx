@@ -1,7 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true"
 	Inherits="System.Web.Mvc.ViewUserControl<Northwind.Web.Controllers.Organization.EmployeesController.EmployeeFormViewModel>" %>
 <%@ Import Namespace="Northwind.Web.Controllers" %>
-<%@ Import Namespace="Northwind.Core" %>
+<%@ Import Namespace="Northwind.Domain" %>
 <%@ Import Namespace="Northwind.Web.Controllers.Organization" %>
 
 <% if (ViewContext.TempData[ControllerEnums.GlobalViewDataProperty.PageMessage.ToString()] != null) { %>

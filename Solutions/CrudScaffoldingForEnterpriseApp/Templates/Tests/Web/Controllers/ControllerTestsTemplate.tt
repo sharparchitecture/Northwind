@@ -15,14 +15,14 @@ using Rhino.Mocks;
 using SharpArch.Testing.NUnit;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>;
+using <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain") #>;
 using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core.QueryDtos") #>;
 using <#= AppendNamespaceHierarchyTo(SolutionName + ".ApplicationServices") #>;
 using <#= AppendNamespaceHierarchyTo(SolutionName + ".ApplicationServices.ViewModels") #>;
 using <#= AppendNamespaceHierarchyTo(SolutionName + ".Web.Controllers") #>;
-using <#= AppendNamespaceHierarchyTo("Tests." + SolutionName + ".Core") #>;
+using <#= AppendNamespaceHierarchyTo("Tests." + SolutionName + ".Domain") #>;
 <#+ if (EntityScaffoldingDetails.NamespaceHierarchy != null) { 
-#>using <#= SolutionName + ".Core" #>;
+#>using <#= SolutionName + ".Domain" #>;
 using <#= SolutionName + ".Web.Controllers" #>;<#+ } #> 
 
 namespace <#= AppendNamespaceHierarchyTo("Tests." + SolutionName + ".Web.Controllers") #>

@@ -7,7 +7,7 @@ public class DomainObjectFormViewModel : BaseTemplate
 	public override string TransformText()
 	{
 #>
-using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>;
+using <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain") #>;
 
 namespace <#= AppendNamespaceHierarchyTo(SolutionName + ".ApplicationServices.ViewModels") #>
 {

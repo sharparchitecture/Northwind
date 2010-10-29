@@ -67,7 +67,7 @@ public class ScaffoldingGenerator : Generator
 	private void GenerateDomainObjectAndTests() {
 		if (DidRequestToGenerate(ArtifactToGenerate.DomainObject)) {
 			string fileName = entityScaffoldingDetails.EntityName + "Tests.cs";
-			string targetPathRoot = testsFolderPath + solutionName + ".Tests\\" + solutionName + ".Core\\";
+			string targetPathRoot = testsFolderPath + solutionName + ".Tests\\" + solutionName + ".Domain\\";
 			string targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot);
 
 			if (! File.Exists(targetPath + fileName)) {
@@ -83,7 +83,7 @@ public class ScaffoldingGenerator : Generator
 			}
 
 			fileName = entityScaffoldingDetails.EntityName + ".cs";
-			targetPathRoot = appFolderPath + solutionName + ".Core\\";
+			targetPathRoot = appFolderPath + solutionName + ".Domain\\";
 			targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot);
 
 			if (! File.Exists(targetPath + fileName)) {
@@ -91,7 +91,7 @@ public class ScaffoldingGenerator : Generator
 					new DomainObjectTemplate(solutionName, entityScaffoldingDetails);
 				
 				string outputFile = entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
-				string outputProject = targetPathRoot + solutionName + ".Core.csproj";
+				string outputProject = targetPathRoot + solutionName + ".Domain.csproj";
 				RenderFileToProject(domainObjectTemplate, outputFile, outputProject);
 			}
 			else {

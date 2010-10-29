@@ -12,14 +12,14 @@ using Rhino.Mocks;
 using SharpArch.Testing.NUnit;
 using System.Collections.Generic;
 using SharpArch.Core.PersistenceSupport;
-using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>;
+using <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain") #>;
 using <#= AppendNamespaceHierarchyTo(SolutionName + ".ApplicationServices") #>;
 using <#= AppendNamespaceHierarchyTo(SolutionName + ".ApplicationServices.ViewModels") #>;
-using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core.QueryDtos") #>;
-using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core.RepositoryInterfaces") #>;
-using <#= AppendNamespaceHierarchyTo("Tests." + SolutionName + ".Core") #>;
+using <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain.QueryDtos") #>;
+using <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain.RepositoryInterfaces") #>;
+using <#= AppendNamespaceHierarchyTo("Tests." + SolutionName + ".Domain") #>;
 <#+ if (EntityScaffoldingDetails.NamespaceHierarchy != null) { 
-#>using <#= SolutionName + ".Core" #>;<#+ } #> 
+#>using <#= SolutionName + ".Domain" #>;<#+ } #> 
 
 namespace Tests.<#= AppendNamespaceHierarchyTo(SolutionName + ".ApplicationServices") #>
 {

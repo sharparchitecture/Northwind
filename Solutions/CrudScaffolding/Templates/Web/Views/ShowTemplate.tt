@@ -10,7 +10,7 @@ public class ShowTemplate : BaseTemplate
 	{
 #>
 <%@ Page Title="<#= EntityScaffoldingDetails.EntityName #> Details" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-	Inherits="System.Web.Mvc.ViewPage<<#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>.<#= EntityScaffoldingDetails.EntityName #>>" %>
+	Inherits="System.Web.Mvc.ViewPage<<#= AppendNamespaceHierarchyTo(SolutionName + ".Domain") #>.<#= EntityScaffoldingDetails.EntityName #>>" %>
 <%@ Import Namespace="<#= AppendNamespaceHierarchyTo(SolutionName + ".Web.Controllers") #>" %>
 
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">

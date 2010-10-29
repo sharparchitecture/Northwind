@@ -8,9 +8,9 @@ public class DomainObjectInstanceFactoryTemplate : BaseTemplate
 	{
 #>
 using System;
-using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>;
+using <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain") #>;
 
-namespace <#= AppendNamespaceHierarchyTo("Tests." + SolutionName + ".Core") #>
+namespace <#= AppendNamespaceHierarchyTo("Tests." + SolutionName + ".Domain") #>
 {
     public class <#= EntityScaffoldingDetails.EntityName #>InstanceFactory
     {

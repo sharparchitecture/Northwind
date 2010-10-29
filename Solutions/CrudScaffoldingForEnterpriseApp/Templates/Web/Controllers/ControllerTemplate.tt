@@ -18,13 +18,13 @@ using NHibernate.Validator.Engine;
 using System.Text;
 using SharpArch.Web.CommonValidator;
 using SharpArch.Core;
-using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>;
+using <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain") #>;
 using <#= AppendNamespaceHierarchyTo(SolutionName + ".ApplicationServices") #>;
 using <#= AppendNamespaceHierarchyTo(SolutionName + ".ApplicationServices.ViewModels") #>;
-using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core.QueryDtos") #>;
-using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core.RepositoryInterfaces") #>;
+using <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain.QueryDtos") #>;
+using <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain.RepositoryInterfaces") #>;
 <#+ if (EntityScaffoldingDetails.NamespaceHierarchy != null) { 
-#>using <#= SolutionName + ".Core" #>;<#+ } #> 
+#>using <#= SolutionName + ".Domain" #>;<#+ } #> 
 
 namespace <#= AppendNamespaceHierarchyTo(SolutionName + ".Web.Controllers") #>
 {

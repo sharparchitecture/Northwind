@@ -10,9 +10,9 @@ public class DomainObjectTestsTemplate : BaseTemplate
 using NUnit.Framework;
 using SharpArch.Testing;
 using SharpArch.Testing.NUnit;
-using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>;
+using <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain") #>;
 
-namespace <#= AppendNamespaceHierarchyTo("Tests." + SolutionName + ".Core") #>
+namespace <#= AppendNamespaceHierarchyTo("Tests." + SolutionName + ".Domain") #>
 {
 	<#+
 	if (! EntityScaffoldingDetails.HasAnyDomainSignatureProperties) { #>

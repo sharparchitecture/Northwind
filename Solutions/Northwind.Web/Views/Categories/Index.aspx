@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage<IList<Category>>" %>
 <%@ Import Namespace="Northwind.Domain" %>
 <%@ Import Namespace="Northwind.Web.Controllers" %>
 
@@ -7,20 +7,13 @@
 
     <form id="form1" runat="server">
     <div>
-        <asp:ListView ID="categoryList" runat="server">
-            <LayoutTemplate>
-                <ul>
-                    <asp:PlaceHolder ID="itemPlaceHolder" runat="server" />
-                </ul>
-            </LayoutTemplate>
-            <ItemTemplate>
+        <ul>
+            <% foreach (var category in Model) { %>
                 <li>
-                    <%#
-                Html.ActionLink<CategoriesController>(
-                    c => c.Show(((Category)Container.DataItem).Id), ((Category)Container.DataItem).CategoryName)%>
+                    <%= Html.ActionLink<CategoriesController>(c => c.Show(category.Id), (category.CategoryName)) %>
                 </li>
-            </ItemTemplate>
-        </asp:ListView>
+            <% } %>
+        </ul>
     </div>
     </form>
 </asp:Content>

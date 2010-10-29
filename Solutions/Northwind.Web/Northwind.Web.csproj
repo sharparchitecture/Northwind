@@ -33,81 +33,81 @@
   <ItemGroup>
     <Reference Include="Castle.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\Castle.Core.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\Castle\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.MicroKernel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\Castle.MicroKernel.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\Castle\Castle.MicroKernel.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\Castle.Windsor.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\Castle\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="CommonServiceLocator.WindsorAdapter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\CommonServiceLocator.WindsorAdapter.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\Castle\CommonServiceLocator.WindsorAdapter.dll</HintPath>
     </Reference>
     <Reference Include="FluentNHibernate, Version=1.1.0.685, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\FluentNHibernate.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\NHibernate\FluentNHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="Iesi.Collections, Version=2.1.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\Iesi.Collections.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\NHibernate\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Inflector.Net, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\Inflector.Net.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\NHibernate\Inflector.Net.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\log4net.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\log4net\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\Microsoft\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\Microsoft.Web.Mvc.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\Microsoft\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="MvcContrib, Version=2.0.36.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\MvcContrib.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\MvcContrib\MvcContrib.dll</HintPath>
     </Reference>
     <Reference Include="MvcContrib.Castle, Version=2.0.36.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\MvcContrib.Castle.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\MvcContrib\MvcContrib.Castle.dll</HintPath>
     </Reference>
     <Reference Include="MvcContrib.FluentHtml, Version=2.0.36.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\MvcContrib.FluentHtml.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\MvcContrib\MvcContrib.FluentHtml.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\SharpArch\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\NHibernate.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\NHibernate\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\NHibernate.ByteCode.Castle.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\NHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.Validator, Version=1.2.0.3001, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\NHibernate.Validator.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\NHibernate\NHibernate.Validator.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\build\SharpArch.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\SharpArch\SharpArch.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.ComponentModel.DataAnnotations">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -119,7 +119,7 @@
     </Reference>
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\System.Web.Mvc.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\Mvc\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -145,20 +145,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Categories\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Categories\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Customers\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Customers\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
     <Compile Include="WcfServices\TerritoriesWcfServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -201,13 +187,13 @@
       <Project>{AF2257E9-F582-48D1-A79D-C8B1932CFD3B}</Project>
       <Name>Northwind.ApplicationServices</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Northwind.Core\Northwind.Core.csproj">
-      <Project>{8836C834-27B7-49C9-8AA0-81A14CF1E590}</Project>
-      <Name>Northwind.Core</Name>
+    <ProjectReference Include="..\Northwind.Domain\Northwind.Domain.csproj">
+      <Project>{A412F40A-805B-49C6-8F3B-C6F0B4D57EFE}</Project>
+      <Name>Northwind.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Northwind.Data\Northwind.Data.csproj">
-      <Project>{581F2160-AC2A-4FD3-B5D8-81C2859C3F11}</Project>
-      <Name>Northwind.Data</Name>
+    <ProjectReference Include="..\Northwind.Infrastructure\Northwind.Infrastructure.csproj">
+      <Project>{0F2F3AAF-6486-4472-B92B-54EDB15095AA}</Project>
+      <Name>Northwind.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Northwind.Wcf.Web\Northwind.Wcf.Web.csproj">
       <Project>{BEE73053-51E5-413B-9931-A080930E4A69}</Project>

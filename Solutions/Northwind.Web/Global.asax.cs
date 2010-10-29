@@ -7,7 +7,7 @@ using Castle.Windsor;
 using CommonServiceLocator.WindsorAdapter;
 using Microsoft.Practices.ServiceLocation;
 using MvcContrib.Castle;
-using Northwind.Data.NHibernateMaps;
+using Northwind.Infrastructure.NHibernateMaps;
 using Northwind.Web.CastleWindsor;
 using Northwind.Web.Controllers;
 using SharpArch.Core.NHibernateValidator.ValidatorProvider;
@@ -86,10 +86,10 @@ namespace Northwind.Web
         private void InitializeNHibernateSession()
         {
             NHibernateSession.ConfigurationCache = new NHibernateConfigurationFileCache(
-                new string[] { "Northwind.Core" });
+                new string[] { "Northwind.Domain" });
             NHibernateSession.Init(
                 webSessionStorage,
-                new string[] { Server.MapPath("~/bin/Northwind.Data.dll") },
+                new string[] { Server.MapPath("~/bin/Northwind.Infrastructure.dll") },
                 new AutoPersistenceModelGenerator().Generate(),
                 Server.MapPath("~/NHibernate.config"));
         }

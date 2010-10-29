@@ -13,7 +13,7 @@ using System;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 
-namespace <#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>
+namespace <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain") #>
 {
     public class <#= EntityScaffoldingDetails.EntityName #> : Entity
     {<#+

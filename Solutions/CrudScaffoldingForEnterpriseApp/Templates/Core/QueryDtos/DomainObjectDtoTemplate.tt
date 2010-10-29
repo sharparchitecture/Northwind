@@ -11,7 +11,7 @@ public class DomainObjectDtoTemplate : BaseTemplate
 #>
 using System;
 
-namespace <#= AppendNamespaceHierarchyTo(SolutionName + ".Core.QueryDtos") #>
+namespace <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain.QueryDtos") #>
 {
     public class <#= EntityScaffoldingDetails.EntityName #>Dto
     {

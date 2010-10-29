@@ -10,7 +10,7 @@ public class ControllerTemplate : BaseTemplate
 	{
 #>
 using System.Web.Mvc;
-using <#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>;
+using <#= AppendNamespaceHierarchyTo(SolutionName + ".Domain") #>;
 using SharpArch.Core.PersistenceSupport;
 using SharpArch.Core.DomainModel;
 using System.Collections.Generic;

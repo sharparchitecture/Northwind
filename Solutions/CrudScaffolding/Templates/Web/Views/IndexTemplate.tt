@@ -10,8 +10,8 @@ public class IndexTemplate : BaseTemplate
 	{
 #>
 <%@ Page Title="<#= EntityScaffoldingDetails.EntityNamePlural #>" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-	Inherits="System.Web.Mvc.ViewPage<IEnumerable<<#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>.<#= EntityScaffoldingDetails.EntityName #>>>" %>
-<%@ Import Namespace="<#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>" %>
+	Inherits="System.Web.Mvc.ViewPage<IEnumerable<<#= AppendNamespaceHierarchyTo(SolutionName + ".Domain") #>.<#= EntityScaffoldingDetails.EntityName #>>>" %>
+<%@ Import Namespace="<#= AppendNamespaceHierarchyTo(SolutionName + ".Domain") #>" %>
 <%@ Import Namespace="<#= SolutionName #>.Web.Controllers" %>
 <#+ if (EntityScaffoldingDetails.NamespaceHierarchy != null) { 
 #><%@ Import Namespace="<#= AppendNamespaceHierarchyTo(SolutionName + ".Web.Controllers") #>" %><#+ 

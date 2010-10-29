@@ -89,14 +89,14 @@ public class ScaffoldingGenerator : Generator
     // checked every time the CRUD scaffolding generator runs to make sure it exists
 	private void GenerateActionConfirmation() {
 		string fileName = "ActionConfirmation.cs";
-		string targetPathRoot = appFolderPath + solutionName + ".Core\\";
+		string targetPathRoot = appFolderPath + solutionName + ".Domain\\";
 		string targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot);
 
 		if (! File.Exists(targetPath + fileName)) {
 			ActionConfirmationTemplate actionConfirmationTemplate =
 				new ActionConfirmationTemplate(solutionName, entityScaffoldingDetails);
 
-			string outputProject = appFolderRelativePath + solutionName + ".Core\\" + solutionName + ".Core.csproj";
+			string outputProject = appFolderRelativePath + solutionName + ".Domain\\" + solutionName + ".Domain.csproj";
 			RenderFileToProject(actionConfirmationTemplate, fileName, outputProject);
 		}
 		else {
@@ -107,7 +107,7 @@ public class ScaffoldingGenerator : Generator
 	private void GenerateDomainObjectInstanceFactoryForTests() {
 		if (DidRequestToGenerate(ArtifactToGenerate.ApplicationService) || DidRequestToGenerate(ArtifactToGenerate.Controller)) {
 			string fileName = entityScaffoldingDetails.EntityName + "InstanceFactory.cs";
-			string targetPathRoot = testsFolderPath + solutionName + ".Tests\\" + solutionName + ".Core\\";
+			string targetPathRoot = testsFolderPath + solutionName + ".Tests\\" + solutionName + ".Domain\\";
 			string targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot);
 
 			if (! File.Exists(targetPath + fileName)) {
@@ -127,7 +127,7 @@ public class ScaffoldingGenerator : Generator
 	private void GenerateNamedQuery() {
 		if (DidRequestToGenerate(ArtifactToGenerate.NamedQuery)) {
 			string fileName = "Get" + entityScaffoldingDetails.EntityName + "Summaries.hbm.xml";
-			string targetPathRoot = appFolderPath + solutionName + ".Data\\NamedQueries\\";
+			string targetPathRoot = appFolderPath + solutionName + ".Infrastructure\\NamedQueries\\";
 			string targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot);
 
 			if (! File.Exists(targetPath + fileName)) {
@@ -135,7 +135,7 @@ public class ScaffoldingGenerator : Generator
 					new GetDomainObjectSummariesHbmTemplate(solutionName, entityScaffoldingDetails);
 
 				string outputFile = "NamedQueries\\" + entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
-				string outputProject = appFolderRelativePath + solutionName + ".Data\\" + solutionName + ".Data.csproj";
+				string outputProject = appFolderRelativePath + solutionName + ".Infrastructure\\" + solutionName + ".Infrastructure.csproj";
 				RenderFileToProject(getDomainObjectSummariesHbmTemplate, outputFile, outputProject, true);
 			}
 			else {
@@ -239,7 +239,7 @@ public class ScaffoldingGenerator : Generator
 					new DomainObjectDtoTemplate(solutionName, entityScaffoldingDetails);
 
 				string outputFile = "QueryDtos\\" + entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
-				string outputProject = appFolderRelativePath + solutionName + ".Core\\" + solutionName + ".Core.csproj";
+				string outputProject = appFolderRelativePath + solutionName + ".Domain\\" + solutionName + ".Domain.csproj";
 				RenderFileToProject(domainObjectDtoTemplate, outputFile, outputProject);
 			}
 			else {
@@ -254,7 +254,7 @@ public class ScaffoldingGenerator : Generator
 	private void GenerateRepository() {
 		if (DidRequestToGenerate(ArtifactToGenerate.Repository)) {
 			string fileName = "I" + entityScaffoldingDetails.EntityName + "Repository.cs";
-			string targetPathRoot = appFolderPath + solutionName + ".Core\\RepositoryInterfaces\\";
+			string targetPathRoot = appFolderPath + solutionName + ".Domain\\RepositoryInterfaces\\";
 			string targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot);
 
 			if (! File.Exists(targetPath + fileName)) {
@@ -262,7 +262,7 @@ public class ScaffoldingGenerator : Generator
 					new IDomainObjectRepositoryTemplate(solutionName, entityScaffoldingDetails);
 
 				string outputFile = "RepositoryInterfaces\\" + entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
-				string outputProject = appFolderRelativePath + solutionName + ".Core\\" + solutionName + ".Core.csproj";
+				string outputProject = appFolderRelativePath + solutionName + ".Domain\\" + solutionName + ".Domain.csproj";
 				RenderFileToProject(iDomainObjectRepositoryTemplate, outputFile, outputProject);
 			}
 			else {
@@ -278,7 +278,7 @@ public class ScaffoldingGenerator : Generator
 					new DomainObjectRepositoryTemplate(solutionName, entityScaffoldingDetails);
 
 				string outputFile = "Repositories\\" + entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
-				string outputProject = appFolderRelativePath + solutionName + ".Data\\" + solutionName + ".Data.csproj";
+				string outputProject = appFolderRelativePath + solutionName + ".Infrastructure\\" + solutionName + ".Infrastructure.csproj";
 				RenderFileToProject(domainObjectRepositoryTemplate, outputFile, outputProject);
 			}
 			else {
@@ -293,7 +293,7 @@ public class ScaffoldingGenerator : Generator
 	private void GenerateDomainObjectAndTests() {
 		if (DidRequestToGenerate(ArtifactToGenerate.DomainObject)) {
 			string fileName = entityScaffoldingDetails.EntityName + "Tests.cs";
-			string targetPathRoot = testsFolderPath + solutionName + ".Tests\\" + solutionName + ".Core\\";
+			string targetPathRoot = testsFolderPath + solutionName + ".Tests\\" + solutionName + ".Domain\\";
 			string targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot);
 
 			if (! File.Exists(targetPath + fileName)) {
@@ -317,7 +317,7 @@ public class ScaffoldingGenerator : Generator
 					new DomainObjectTemplate(solutionName, entityScaffoldingDetails);
 
 				string outputFile = entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
-				string outputProject = targetPathRoot + solutionName + ".Core.csproj";
+				string outputProject = targetPathRoot + solutionName + ".Domain.csproj";
 				RenderFileToProject(domainObjectTemplate, outputFile, outputProject);
 			}
 			else {

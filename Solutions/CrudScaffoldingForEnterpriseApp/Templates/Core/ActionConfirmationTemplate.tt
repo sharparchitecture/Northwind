@@ -7,7 +7,7 @@ public class ActionConfirmationTemplate : BaseTemplate
 	public override string TransformText()
 	{
 #>
-namespace <#= SolutionName #>.Core
+namespace <#= SolutionName #>.Domain
 {
     public class ActionConfirmation
     {
