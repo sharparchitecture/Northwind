@@ -24,7 +24,6 @@
             this.InitMembers();
         }
 
-
         [DomainSignature]
         [NotNullNotEmpty(Message = "First name must be provided")]
         public virtual string FirstName { get; set; }

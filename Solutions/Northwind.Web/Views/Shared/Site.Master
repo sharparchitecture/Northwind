@@ -13,10 +13,10 @@
         <title>S#arp Architecture</title>
     </asp:ContentPlaceHolder>
 
-    <link href="<%= ResolveUrl("~") %>Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="<%=this.ResolveUrl("~")%>Content/Site.css" rel="stylesheet" type="text/css" />
 
-    <script src="<%= Url.Content("~/Scripts/MicrosoftAjax.js") %>" type="text/javascript"></script>
-    <script src="<%= Url.Content("~/Scripts/MicrosoftMvcValidation.js") %>" type="text/javascript"></script>
+    <script src="<%=this.Url.Content("~/Scripts/MicrosoftAjax.js")%>" type="text/javascript"></script>
+    <script src="<%=this.Url.Content("~/Scripts/MicrosoftMvcValidation.js")%>" type="text/javascript"></script>
 </head>
 
 <body>
@@ -25,15 +25,20 @@
             <div class="columnsContainer">
                 <div class="leftColumn">
                     <p>
-                        <%= Html.Image("~/Content/Images/sharp_arch.jpg") %>
+                        <%=this.Html.Image("~/Content/Images/sharp_arch.jpg")%>
                     </p>
                     <h2>Example Pages</h2>
                     <ul>
-                        <li><%= Html.ActionLinkForAreas<HomeController>(a => a.Index(), "Home") %></li>
-                        <li><%= Html.ActionLinkForAreas<CategoriesController>(a => a.Index(), "List Categories") %></li>
-                        <li><%= Html.ActionLinkForAreas<CustomersController>(a => a.Index(),"List Customers with Lazily Loaded Orders")%></li>
-                        <li><%= Html.ActionLinkForAreas<EmployeesController>(a => a.Index(), "Employee CRUD with Validation")%></li>
-                        <li><%= Html.ActionLinkForAreas<DashboardController>(a => a.Index(),"Dashboard Controller using an 'Application Service'")%></li>
+                        <li><%=this.Html.ActionLinkForAreas<HomeController>(a => a.Index(), "Home")%></li>
+                        <li><%=this.Html.ActionLinkForAreas<CategoriesController>(a => a.Index(), "List Categories")%></li>
+                        <li><%=
+                this.Html.ActionLinkForAreas<CustomersController>(
+                    a => a.Index(), "List Customers with Lazily Loaded Orders")%></li>
+                        <li><%=
+                this.Html.ActionLinkForAreas<EmployeesController>(a => a.Index(), "Employee CRUD with Validation")%></li>
+                        <li><%=
+                this.Html.ActionLinkForAreas<DashboardController>(
+                    a => a.Index(), "Dashboard Controller using an 'Application Service'")%></li>
                     </ul>
                 </div>
                 <!--/leftColumn-->
@@ -47,7 +52,7 @@
 
             </div><!--/columnsContainer-->
             
-            <div id="sharpArchLogo"><%= Html.Image("~/Content/Images/sharp_arch_small.gif")%></div>
+            <div id="sharpArchLogo"><%=this.Html.Image("~/Content/Images/sharp_arch_small.gif")%></div>
 
         </div><!--/mainContent-->
     </div><!--/page-->

@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage<IList<Category>>" %>
-<%@ Import Namespace="Northwind.Domain" %>
 <%@ Import Namespace="Northwind.Web.Controllers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
@@ -8,11 +7,15 @@
     <form id="form1" runat="server">
     <div>
         <ul>
-            <% foreach (var category in Model) { %>
+            <%
+                foreach (var category in this.Model)
+                {%>
                 <li>
-                    <%= Html.ActionLink<CategoriesController>(c => c.Show(category.Id), (category.CategoryName)) %>
+                    <%=
+                        this.Html.ActionLink<CategoriesController>(c => c.Show(category.Id), (category.CategoryName))%>
                 </li>
-            <% } %>
+            <%
+                }%>
         </ul>
     </div>
     </form>

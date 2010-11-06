@@ -1,6 +1,7 @@
 ﻿namespace Northwind.Web.Controllers
 {
     using System.Web.Mvc;
+
     using Northwind.Domain.Contracts.Tasks;
 
     [HandleError]
@@ -8,7 +9,8 @@
     {
         private readonly ICustomerTasks customerTasks;
 
-        public CustomersController(ICustomerTasks customerTasks) {
+        public CustomersController(ICustomerTasks customerTasks)
+        {
             this.customerTasks = customerTasks;
         }
 
@@ -20,16 +22,18 @@
         ///   idea; this is a major complaint I have with the Northwind database.  With that said, 
         ///   some legacy databases require such techniques.
         /// </summary>
-        public ActionResult Create(string customerName, string assignedId) {
-            var customerToCreate = customerTasks.Create(customerName, assignedId);
+        public ActionResult Create(string customerName, string assignedId)
+        {
+            var customerToCreate = this.customerTasks.Create(customerName, assignedId);
             return View(customerToCreate);
         }
 
         /// <summary>
         ///   The transaction on this action is optional, but recommended for performance reasons
         /// </summary>
-        public ActionResult Index() {
-            var customers = customerTasks.GetCustomersByCountry("Venezuela");
+        public ActionResult Index()
+        {
+            var customers = this.customerTasks.GetCustomersByCountry("Venezuela");
             return View(customers);
         }
     }

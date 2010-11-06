@@ -1,14 +1,17 @@
 ﻿namespace Northwind.Domain.Contracts.Tasks
 {
     using System.Collections.Generic;
-    using Organization;
+
+    using Northwind.Domain.Organization;
 
     public interface IEmployeeTasks
     {
-        IList<Employee> GetAllEmployees();
-        Employee GetEmployeeById(int id);
-
         void CreateOrUpdate(Employee employee);
+
         void Delete(int id);
+
+        IList<Employee> GetAllEmployees();
+
+        Employee GetEmployeeById(int id);
     }
 }

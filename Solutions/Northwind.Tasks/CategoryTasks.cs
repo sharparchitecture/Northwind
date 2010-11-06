@@ -1,48 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Northwind.Domain;
-using Northwind.Domain.Contracts.Tasks;
-using Northwind.Domain.Organization;
-using SharpArch.Core;
-using SharpArch.Core.PersistenceSupport;
-
-namespace Northwind.Tasks
+﻿namespace Northwind.Tasks
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using Northwind.Domain;
+    using Northwind.Domain.Contracts.Tasks;
+
+    using SharpArch.Core.PersistenceSupport;
+
     public class CategoryTasks : ICategoryTasks
     {
-        #region Fields
-
         private readonly IRepository<Category> categoryRepository;
 
-        #endregion
-
-        public CategoryTasks(IRepository<Category> categoryRepository) {
+        public CategoryTasks(IRepository<Category> categoryRepository)
+        {
             this.categoryRepository = categoryRepository;
         }
 
-        public List<Category> GetAllCategories() {
-            categoryRepository.DbContext.BeginTransaction();
-            var categories = categoryRepository.GetAll();
-            categoryRepository.DbContext.CommitTransaction();
-
-            return categories.ToList();
-        }
-
-        public Category GetCategoryById(int id) {
-            categoryRepository.DbContext.BeginTransaction();
-            var category = categoryRepository.Get(id);
-            categoryRepository.DbContext.CommitTransaction();
+        public Category Create(string categoryName)
+        {
+            var category = new Category(categoryName);
+            this.categoryRepository.DbContext.BeginTransaction();
+            category = this.categoryRepository.SaveOrUpdate(category);
+            this.categoryRepository.DbContext.CommitTransaction();
 
             return category;
         }
 
-        public Category Create(string categoryName) {
-            var category = new Category(categoryName);
-            categoryRepository.DbContext.BeginTransaction();
-            category = categoryRepository.SaveOrUpdate(category);
-            categoryRepository.DbContext.CommitTransaction();
+        public List<Category> GetAllCategories()
+        {
+            this.categoryRepository.DbContext.BeginTransaction();
+            var categories = this.categoryRepository.GetAll();
+            this.categoryRepository.DbContext.CommitTransaction();
+
+            return categories.ToList();
+        }
+
+        public Category GetCategoryById(int id)
+        {
+            this.categoryRepository.DbContext.BeginTransaction();
+            var category = this.categoryRepository.Get(id);
+            this.categoryRepository.DbContext.CommitTransaction();
 
             return category;
         }

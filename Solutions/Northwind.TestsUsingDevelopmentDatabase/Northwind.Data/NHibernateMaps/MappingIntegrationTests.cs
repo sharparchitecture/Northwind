@@ -1,10 +1,10 @@
 ﻿namespace Tests.Northwind.Data.NHibernateMaps
 {
-    using global::Northwind.Infrastructure.NHibernateMaps;
-
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
+
+    using global::Northwind.Infrastructure.NHibernateMaps;
 
     using NUnit.Framework;
 

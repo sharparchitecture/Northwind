@@ -1,6 +1,7 @@
 ﻿namespace Northwind.Domain
 {
     using System;
+
     using SharpArch.Core;
     using SharpArch.Core.DomainModel;
 

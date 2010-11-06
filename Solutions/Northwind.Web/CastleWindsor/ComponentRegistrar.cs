@@ -42,8 +42,8 @@
                     "Northwind.Domain"));
 
             container.Register(
-                AllTypes.Pick()
-                        .FromAssemblyNamed("Northwind.Tasks").WithService.FirstNonGenericCoreInterface("Northwind.Domain.Contracts.Tasks"));
+                AllTypes.Pick().FromAssemblyNamed("Northwind.Tasks").WithService.FirstNonGenericCoreInterface(
+                    "Northwind.Domain.Contracts.Tasks"));
         }
 
         private static void AddGenericRepositoriesTo(IWindsorContainer container)

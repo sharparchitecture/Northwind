@@ -4,7 +4,8 @@
 
     public interface ICustomerTasks
     {
-        List<Customer> GetCustomersByCountry(string country);
         Customer Create(string customerName, string assignedId);
+
+        List<Customer> GetCustomersByCountry(string country);
     }
 }

@@ -12,7 +12,7 @@
 
             routes.MapRoute(
                 "Default", 
-                "{controller}/{action}/{id}",
+                "{controller}/{action}/{id}", 
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional });
         }
     }

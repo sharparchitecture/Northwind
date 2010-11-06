@@ -46,5 +46,6 @@
         }%>
     </table>
 
-    <p><%=this.Html.ActionLink<EmployeesController>(c => c.CreateOrUpdate(0), "Create New Employee")%></p>
+    <p><%=
+                this.Html.ActionLink<EmployeesController>(c => c.CreateOrUpdate(0), "Create New Employee")%></p>
 </asp:Content>

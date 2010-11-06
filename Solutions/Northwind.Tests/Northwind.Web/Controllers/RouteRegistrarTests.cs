@@ -2,9 +2,9 @@
 {
     using System.Web.Routing;
 
-    using global::Northwind.Web.Controllers;
-
     using MvcContrib.TestHelper;
+
+    using global::Northwind.Web.Controllers;
 
     using NUnit.Framework;
 

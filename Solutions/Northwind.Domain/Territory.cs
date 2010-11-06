@@ -5,7 +5,7 @@
 
     using NHibernate.Validator.Constraints;
 
-    using Organization;
+    using Northwind.Domain.Organization;
 
     using SharpArch.Core;
     using SharpArch.Core.DomainModel;

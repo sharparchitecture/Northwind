@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Northwind.Domain.Contracts.Tasks
+﻿namespace Northwind.Domain.Contracts.Tasks
 {
+    using System.Collections.Generic;
+
     public interface ICategoryTasks
     {
-        List<Category> GetAllCategories();
-        Category GetCategoryById(int id);
         Category Create(string categoryName);
+
+        List<Category> GetAllCategories();
+
+        Category GetCategoryById(int id);
     }
 }

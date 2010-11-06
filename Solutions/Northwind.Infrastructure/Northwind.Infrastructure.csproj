@@ -85,7 +85,6 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="NHibernateMaps\AutoPersistenceModelGenerator.cs" />
     <Compile Include="NHibernateMaps\CategoryMap.cs" />
