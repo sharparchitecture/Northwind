@@ -1,5 +1,6 @@
 ﻿namespace Northwind.Domain.Organization
 {
+    using System;
     using System.Collections.Generic;
 
     using NHibernate.Validator.Constraints;
@@ -14,6 +15,7 @@
     ///   domain signature properties.  If you don't, then Equals will use it's default behavior and
     ///   compare the object references themselves.
     /// </summary>
+    [Serializable]
     [HasUniqueDomainSignature(Message = "An employee already exists with the same first and last name")]
     public class Employee : Entity
     {
@@ -22,15 +24,6 @@
             this.InitMembers();
         }
 
-        /// <summary>
-        ///   Creates valid domain object
-        /// </summary>
-        public Employee(string firstName, string lastName)
-            : this()
-        {
-            this.FirstName = firstName;
-            this.LastName = lastName;
-        }
 
         [DomainSignature]
         [NotNullNotEmpty(Message = "First name must be provided")]
@@ -49,7 +42,7 @@
         public virtual string LastName { get; set; }
 
         [Range(1, 9999, Message = "Phone extension must be between 1 and 9999")]
-        public virtual int PhoneExtension { get; set; }
+        public virtual int? PhoneExtension { get; set; }
 
         /// <summary>
         ///   Note the protected set...only the ORM should set the collection reference directly

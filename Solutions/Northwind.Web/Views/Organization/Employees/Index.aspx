@@ -31,7 +31,7 @@
 				<td><%=employee.LastName%></td>
 				<td><%=employee.PhoneExtension%></td>
 				<td><%=this.Html.ActionLink<EmployeesController>(c => c.Show(employee.Id), "Details ")%></td>
-				<td><%=this.Html.ActionLink<EmployeesController>(c => c.Edit(employee.Id), "Edit")%></td>
+				<td><%=this.Html.ActionLink<EmployeesController>(c => c.CreateOrUpdate(employee.Id), "Edit")%></td>
 				<td>
     				<%
             using (this.Html.BeginForm<EmployeesController>(c => c.Delete(employee.Id)))
@@ -46,5 +46,5 @@
         }%>
     </table>
 
-    <p><%=this.Html.ActionLink<EmployeesController>(c => c.Create(), "Create New Employee")%></p>
+    <p><%=this.Html.ActionLink<EmployeesController>(c => c.CreateOrUpdate(0), "Create New Employee")%></p>
 </asp:Content>

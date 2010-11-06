@@ -1,14 +1,16 @@
 ﻿namespace Northwind.Domain
 {
+    using System;
     using System.Collections.Generic;
 
     using NHibernate.Validator.Constraints;
 
-    using Northwind.Domain.Organization;
+    using Organization;
 
     using SharpArch.Core;
     using SharpArch.Core.DomainModel;
 
+    [Serializable]
     public class Territory : EntityWithTypedId<string>, IHasAssignedId<string>
     {
         private const int IdMaxLength = 20;
