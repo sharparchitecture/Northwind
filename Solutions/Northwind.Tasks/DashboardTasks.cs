@@ -1,16 +1,11 @@
-﻿namespace Northwind.ApplicationServices
+﻿using System.Collections.Generic;
+
+namespace Northwind.Tasks
 {
-    using System.Collections.Generic;
-
-    using Northwind.Domain;
-    using Northwind.Domain.Contracts;
-
+    using Domain;
+    using Domain.Contracts;
+    using Domain.Contracts.Tasks;
     using SharpArch.Core;
-
-    public interface IDashboardService
-    {
-        DashboardService.DashboardSummaryDto GetDashboardSummary();
-    }
 
     /// <summary>
     ///   This is an "application service" for coordinating the activities required by the view.
@@ -21,7 +16,7 @@
     ///   the technology context; e.g., web services, ASP.NET MVC, WCF, console app, etc.  Consequently,
     ///   it's easy to reuse without having any duplicated code amongst the various project types.
     /// </summary>
-    public class DashboardService : IDashboardService
+    public class DashboardTasks : IDashboardTasks
     {
         private readonly ISupplierRepository supplierRepository;
 
@@ -34,7 +29,7 @@
         ///   WCF services (e.g., as in Northwind.Web.Controllers.TerritoriesController), or even other application
         ///   services if you wanted to make it really ugly.
         /// </summary>
-        public DashboardService(ISupplierRepository supplierRepository)
+        public DashboardTasks(ISupplierRepository supplierRepository) 
         {
             Check.Require(supplierRepository != null, "supplierRepository may not be null");
 
@@ -44,7 +39,7 @@
         /// <summary>
         ///   Uses the repository and domain layer to gather a few summary items for a dashboard view.
         /// </summary>
-        public DashboardSummaryDto GetDashboardSummary()
+        public DashboardSummaryDto GetDashboardSummary() 
         {
             var dashboardSummaryDto = new DashboardSummaryDto();
 
@@ -62,14 +57,6 @@
             return dashboardSummaryDto;
         }
 
-        /// <summary>
-        ///   Arguably, this could go into a dedicated DTO layer.
-        /// </summary>
-        public class DashboardSummaryDto
-        {
-            public IList<Supplier> SuppliersCarryingFewestProducts { get; set; }
 
-            public IList<Supplier> SuppliersCarryingMostProducts { get; set; }
-        }
     }
 }

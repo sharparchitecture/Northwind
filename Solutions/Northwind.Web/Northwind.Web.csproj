@@ -190,10 +190,6 @@
     <Content Include="Views\Territories\Index.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Northwind.ApplicationServices\Northwind.ApplicationServices.csproj">
-      <Project>{AF2257E9-F582-48D1-A79D-C8B1932CFD3B}</Project>
-      <Name>Northwind.ApplicationServices</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Northwind.Domain\Northwind.Domain.csproj">
       <Project>{A412F40A-805B-49C6-8F3B-C6F0B4D57EFE}</Project>
       <Name>Northwind.Domain</Name>

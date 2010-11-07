@@ -23,16 +23,9 @@
         {
             AddGenericRepositoriesTo(container);
             AddCustomRepositoriesTo(container);
-            AddApplicationServicesTo(container);
             AddWcfServiceFactoriesTo(container);
 
             container.AddComponent("validator", typeof(IValidator), typeof(Validator));
-        }
-
-        private static void AddApplicationServicesTo(IWindsorContainer container)
-        {
-            container.Register(
-                AllTypes.Pick().FromAssemblyNamed("Northwind.ApplicationServices").WithService.FirstInterface());
         }
 
         private static void AddCustomRepositoriesTo(IWindsorContainer container)

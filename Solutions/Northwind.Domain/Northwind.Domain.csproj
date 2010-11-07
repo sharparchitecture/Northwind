@@ -84,6 +84,7 @@
     <Compile Include="Category.cs" />
     <Compile Include="Contracts\Tasks\ICategoryTasks.cs" />
     <Compile Include="Contracts\Tasks\ICustomerTasks.cs" />
+    <Compile Include="Contracts\Tasks\IDashboardTasks.cs" />
     <Compile Include="Contracts\Tasks\IEmployeeTasks.cs" />
     <Compile Include="Contracts\Tasks\ITerritoryTasks.cs" />
     <Compile Include="Customer.cs" />

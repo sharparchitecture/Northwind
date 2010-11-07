@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="CategoryTasks.cs" />
     <Compile Include="CustomerTasks.cs" />
+    <Compile Include="DashboardTasks.cs" />
     <Compile Include="EmployeeTasks.cs" />
     <Compile Include="ObjectCopier.cs" />
     <Compile Include="TerritoryTasks.cs" />

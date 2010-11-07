@@ -1,25 +1,23 @@
 ﻿namespace Northwind.Web.Controllers
 {
+    using Domain.Contracts.Tasks;
     using System.Web.Mvc;
-
-    using Northwind.ApplicationServices;
-
     using SharpArch.Core;
 
     public class DashboardController : Controller
     {
-        private readonly IDashboardService dashboardService;
+        private readonly IDashboardTasks dashboardService;
 
         /// <summary>
         ///   Note that the application service gets injected into the controller.  Since it's not a 
         ///   repository (which gets automatically wired up for dependency injection), the service 
         ///   needs to be manually registered within Northwind.Web.CastleWindsor.ComponentRegistrar
         /// </summary>
-        public DashboardController(IDashboardService dashboardService)
+        public DashboardController(IDashboardTasks dashboardTasks)
         {
-            Check.Require(dashboardService != null, "dashboardService may not be null");
+            Check.Require(dashboardTasks != null, "dashboardService may not be null");
 
-            this.dashboardService = dashboardService;
+            this.dashboardService = dashboardTasks;
         }
 
         /// <summary>
