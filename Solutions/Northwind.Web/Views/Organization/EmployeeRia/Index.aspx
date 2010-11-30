@@ -63,17 +63,21 @@
 			<input name="Employee.LastName" value="${LastName}" />
 			</div>			
 		</li>
+        		<li>        
+			<label for="Employee Territories">Territories:</label>     
+            <div>       
+            <input id="TerritoriesAutoSuggest" name="TerritoriesString" style="width:300px;" value="${TerritoriesString}"/>
+            <div>
+                <div id="suggestions" style="float:left;position:absolute;background:white;z-index:9999;width:300px;"></div>
+            </div>
+            </div>
+		</li>
+        <div style="clear:both;"></div>
 		<li>
         <label for="PhoneExtension">PhoneExtension:</label>		    
 			<div id="PhoneExtension">
             <input name="Employee.PhoneExtension" value="${PhoneExtension}" />			    
 			</div>			
-		</li>
-		<li>        
-			<label for="Employee Territories">Territories:</label>     
-            <div>       
-            <textarea name="TerritoriesString" cols="68" rows="3">${TerritoriesString}</textarea>
-            </div>
 		</li>
 	    <li>
             <button id="employee-save">Save</button>

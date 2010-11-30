@@ -36,7 +36,29 @@ namespace Northwind.Client
 
         public void TerritorySuggestions(jQueryEvent eventHandler) 
         {
-            eventHandler.CurrentTarget.FirstChild.NodeValue.Split(",");
+            jQuery.Select("#suggestions").Empty();
+            InputElement territoryInput = (InputElement) eventHandler.CurrentTarget;
+
+            string[] territoryArray = territoryInput.Value.Split(',');
+
+            for (int index = 0; index < this.employeeViewModel.AvailableTerritories.Length; index++) 
+            {
+                if (index > 2) 
+                {
+                    //jQuery.Select("#suggestions").Append(
+                    //    jQuery.FromHtml("<div style=\"margin-left:7px;\">" + (this.employeeViewModel.AvailableTerritories.Length - index) + " more not showing</div>"));
+                    break;
+                }
+
+                Territory availableTerritory = this.employeeViewModel.AvailableTerritories[index];
+                RegularExpression r = new RegularExpression(territoryArray[territoryArray.Length - 1].Trim(), "i");
+
+                if (availableTerritory.Description.Search(r) != -1) 
+                {
+                    jQuery.Select("#suggestions").Append(
+                        jQuery.FromHtml("<div style=\"margin-left:7px;\">" + availableTerritory.Description + "</div>"));
+                }
+            }
         }
 
         private void RegisterClickHandlers()
@@ -46,7 +68,7 @@ namespace Northwind.Client
             jQuery.Select("#edit").Live("click", this.Edit);
             jQuery.Select("#delete").Live("click", this.Remove);
             jQuery.Select("#details").Live("click", this.Details);
-            jQuery.Select("#TerritoriesString").Live("keyup", this.TerritorySuggestions);
+            jQuery.Select("#TerritoriesAutoSuggest").Live("keyup", this.TerritorySuggestions);
         }
 
         private void Initialize()

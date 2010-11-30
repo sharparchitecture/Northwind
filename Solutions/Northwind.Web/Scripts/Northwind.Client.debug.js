@@ -33,7 +33,19 @@ Northwind.Client.EmployeeModule.prototype = {
     territorySuggestions: function Northwind_Client_EmployeeModule$territorySuggestions(eventHandler) {
         /// <param name="eventHandler" type="jQueryEvent">
         /// </param>
-        eventHandler.currentTarget.firstChild.nodeValue.split(',');
+        $('#suggestions').empty();
+        var territoryInput = eventHandler.currentTarget;
+        var territoryArray = territoryInput.value.split(',');
+        for (var index = 0; index < this._employeeViewModel.AvailableTerritories.length; index++) {
+            if (index > 2) {
+                break;
+            }
+            var availableTerritory = this._employeeViewModel.AvailableTerritories[index];
+            var r = new RegExp(territoryArray[territoryArray.length - 1].trim(), 'i');
+            if (availableTerritory.Description.search(r) !== -1) {
+                $('#suggestions').append($('<div style=\"margin-left:7px;\">' + availableTerritory.Description + '</div>'));
+            }
+        }
     },
     
     _registerClickHandlers: function Northwind_Client_EmployeeModule$_registerClickHandlers() {
@@ -42,7 +54,7 @@ Northwind.Client.EmployeeModule.prototype = {
         $('#edit').live('click', ss.Delegate.create(this, this._edit));
         $('#delete').live('click', ss.Delegate.create(this, this._remove));
         $('#details').live('click', ss.Delegate.create(this, this._details));
-        $('#AvailableTerritories').live('keyup', ss.Delegate.create(this, this.territorySuggestions));
+        $('#TerritoriesAutoSuggest').live('keyup', ss.Delegate.create(this, this.territorySuggestions));
     },
     
     _initialize: function Northwind_Client_EmployeeModule$_initialize() {
