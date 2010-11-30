@@ -1,4 +1,6 @@
-﻿namespace Northwind.Domain
+﻿using Newtonsoft.Json;
+
+namespace Northwind.Domain
 {
     using System;
     using System.Collections.Generic;
@@ -32,6 +34,7 @@
 
         [DomainSignature]
         [NotNullNotEmpty]
+        [JsonProperty]
         public virtual string Description { get; set; }
 
         /// <summary>

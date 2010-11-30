@@ -1,4 +1,6 @@
-﻿namespace Northwind.Domain.Organization
+﻿using Newtonsoft.Json;
+
+namespace Northwind.Domain.Organization
 {
     using System;
     using System.Collections.Generic;
@@ -26,6 +28,7 @@
 
         [DomainSignature]
         [NotNullNotEmpty(Message = "First name must be provided")]
+        [JsonProperty]
         public virtual string FirstName { get; set; }
 
         public virtual string FullName
@@ -38,15 +41,18 @@
 
         [DomainSignature]
         [NotNullNotEmpty(Message = "Last name must be provided")]
+        [JsonProperty]
         public virtual string LastName { get; set; }
 
         [Range(1, 9999, Message = "Phone extension must be between 1 and 9999")]
+        [JsonProperty]
         public virtual int? PhoneExtension { get; set; }
 
         /// <summary>
         ///   Note the protected set...only the ORM should set the collection reference directly
         ///   after it's been initialized in <see cref = "InitMembers" />
         /// </summary>
+        [JsonProperty]
         public virtual IList<Territory> Territories { get; protected set; }
 
         private void InitMembers()

@@ -152,6 +152,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Content\jquery-ui-1.8.6.custom.css" />
+    <Content Include="Scripts\jquery.tmpl.js" />
+    <Content Include="Scripts\mscorlib.js" />
+    <Content Include="Scripts\Northwind.Client.debug.js" />
+    <Content Include="Views\Organization\EmployeeRia\Index.aspx" />
     <Compile Include="WcfServices\TerritoriesWcfServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
