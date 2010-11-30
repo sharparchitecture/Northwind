@@ -6,7 +6,7 @@
     {
         public Employee Employee { get; set; }
 
-        public string AvailableTerritories { get; set; }
+        public string TerritoriesString { get; set; }
     }
 }
 

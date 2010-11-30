@@ -72,12 +72,11 @@
 		<li>        
 			<label for="Employee Territories">Territories:</label>     
             <div>       
-            <textarea name="AvailableTerritories" cols="68" rows="3">${TerritoriesString}</textarea>
+            <textarea name="TerritoriesString" cols="68" rows="3">${TerritoriesString}</textarea>
             </div>
 		</li>
 	    <li>
             <button id="employee-save">Save</button>
-            <button id="employee-cancel" class="default">Cancel</button>
         </li>
         </form>
     </ul>

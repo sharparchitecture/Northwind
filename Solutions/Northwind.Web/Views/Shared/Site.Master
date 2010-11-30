@@ -36,9 +36,12 @@
                     a => a.Index(), "List Customers with Lazily Loaded Orders")%></li>
                         <li><%=
                 this.Html.ActionLinkForAreas<EmployeesController>(a => a.Index(), "Employee CRUD with Validation")%></li>
+                <li><%=
+                this.Html.ActionLinkForAreas<EmployeeRiaController>(
+                    a => a.Index(), "Employee CRUD RIA Sample")%></li>
                         <li><%=
                 this.Html.ActionLinkForAreas<DashboardController>(
-                    a => a.Index(), "Dashboard Controller using an 'Application Service'")%></li>
+                    a => a.Index(), "Dashboard Controller using an 'Application Service'")%></li>                                            
                     </ul>
                 </div>
                 <!--/leftColumn-->

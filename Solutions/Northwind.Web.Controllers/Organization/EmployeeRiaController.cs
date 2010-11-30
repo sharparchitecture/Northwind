@@ -1,4 +1,7 @@
-﻿namespace Northwind.Web.Controllers.Organization
+﻿using Newtonsoft.Json;
+using Northwind.Infrastructure;
+
+namespace Northwind.Web.Controllers.Organization
 {
     using System.Web.Mvc;
     using Domain.Contracts.Tasks;
@@ -41,9 +44,22 @@
         [HttpPost]
         public JsonNetResult Edit(CreateEmployeeViewModel createEmployeeViewModel) 
         {
-            this.employeeTasks.CreateOrUpdate(createEmployeeViewModel.Employee);
+            this.employeeTasks.RiaCreateOrUpdate(createEmployeeViewModel.Employee, createEmployeeViewModel.TerritoriesString);
 
-            return new JsonNetResult { Data = createEmployeeViewModel.Employee };
+            var serializer = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                ContractResolver = new NHibernateContractResolver(),
+            };
+
+            var jsonNetResult = new JsonNetResult
+            {
+                Data = createEmployeeViewModel.Employee,
+                SerializerSettings = serializer
+            };
+
+            return jsonNetResult;
         }
 
         [Transaction]

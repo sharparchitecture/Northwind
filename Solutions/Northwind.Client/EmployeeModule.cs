@@ -12,14 +12,18 @@ namespace Northwind.Client
 {
     public class EmployeeModule
     {
-        private EmployeeViewModel EmployeeViewModel;
+        private EmployeeViewModel employeeViewModel;
 
         private Employee selectedEmployee;
+
+        private IEmployeeService employeeService;
 
         public EmployeeModule() 
         {
             this.Initialize();
             this.RegisterClickHandlers();
+
+            this.employeeService = new EmployeeService();
         }
 
         public Employee SelectedEmployee 
@@ -42,7 +46,7 @@ namespace Northwind.Client
             jQuery.Select("#edit").Live("click", this.Edit);
             jQuery.Select("#delete").Live("click", this.Remove);
             jQuery.Select("#details").Live("click", this.Details);
-            jQuery.Select("#AvailableTerritories").Live("keyup", this.TerritorySuggestions);
+            jQuery.Select("#TerritoriesString").Live("keyup", this.TerritorySuggestions);
         }
 
         private void Initialize()
@@ -54,7 +58,7 @@ namespace Northwind.Client
                             delegate(object response)
                                 {
                                     EmployeeViewModel viewModel = (EmployeeViewModel)response;
-                                    this.EmployeeViewModel = viewModel;
+                                    this.employeeViewModel = viewModel;
                                     this.RenderTable(viewModel);
                                 });
         }
@@ -84,13 +88,15 @@ namespace Northwind.Client
                             {
                                 jQuery.Select("#main").Empty();
                                 jQuery.Select("#employee-form").Remove();
+                                
+                                // Ideally you'd have an update function
+                                // that simply takes the return Employee and adds
+                                // it to the table instead of doing a roundtrip.
                                 this.Initialize();
                                 return;
                             }
 
-                            IEmployeeService employeeService = new EmployeeService();
-                            employeeService.ShowValidationResults(employee);
-                            jQuery.Select("#employee-save").Attribute("disabled", "false");
+                            this.employeeService.ShowValidationResults(employee);
             });
         }
 
@@ -98,8 +104,7 @@ namespace Northwind.Client
         {
             this.GetCurrentEmployeeFromRow(eventHandler.CurrentTarget.GetAttribute("employeeId").ToString());
 
-            IEmployeeService employeeService = new EmployeeService();
-            employeeService.DisplayForm(this.SelectedEmployee);
+            this.employeeService.DisplayForm(this.SelectedEmployee);
         }
 
         // If speed is a concern and it is not imperative that the UI be in sync, you could much
@@ -116,8 +121,8 @@ namespace Northwind.Client
                         delegate(object response)
                         {
                             Employee[] employees = (Employee[])response;
-                            this.EmployeeViewModel.Employees = employees;
-                            this.RenderTable(this.EmployeeViewModel);
+                            this.employeeViewModel.Employees = employees;
+                            this.RenderTable(this.employeeViewModel);
                         });
         }
 
@@ -139,7 +144,7 @@ namespace Northwind.Client
 
         private void GetCurrentEmployeeFromRow(string id) 
         {
-            foreach (Employee employee in this.EmployeeViewModel.Employees)
+            foreach (Employee employee in this.employeeViewModel.Employees)
             {
                 if (employee.Id.ToString() == id.ToString())
                 {
@@ -198,7 +203,7 @@ namespace Northwind.Client
             jQueryObject employeeTable = jQueryTemplating.RenderTemplate(jQuery.Select("#employees-table-tmpl").GetHtml(), slug);
             jQuery.Select("#main").Append(employeeTable);
 
-            foreach (Employee employee in this.EmployeeViewModel.Employees) {
+            foreach (Employee employee in this.employeeViewModel.Employees) {
                 jQueryObject employeeRow = jQueryTemplating.RenderTemplate(jQuery.Select("#employees-table-row-tmpl").GetHtml(), employee);
                 jQuery.Select("#employees-table tbody").Append(employeeRow);
             }

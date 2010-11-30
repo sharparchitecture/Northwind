@@ -1,4 +1,7 @@
-﻿namespace Northwind.Tasks
+﻿using System.Linq;
+using Northwind.Domain;
+
+namespace Northwind.Tasks
 {
     using System.Collections.Generic;
 
@@ -11,10 +14,12 @@
     public class EmployeeTasks : IEmployeeTasks
     {
         private readonly IRepository<Employee> employeeRepository;
+        private readonly IRepository<Territory> territoryRepository;
 
-        public EmployeeTasks(IRepository<Employee> employeeRepository)
+        public EmployeeTasks(IRepository<Employee> employeeRepository, IRepository<Territory> territoryRepository)
         {
             this.employeeRepository = employeeRepository;
+            this.territoryRepository = territoryRepository;
         }
 
         public void CreateOrUpdate(Employee employee)
@@ -25,6 +30,35 @@
             foreach (var territory in employeeToUpdate.Territories)
             {
                 employee.Territories.Add(territory);
+            }
+
+            if (employee.IsValid())
+            {
+                this.employeeRepository.DbContext.BeginTransaction();
+                this.employeeRepository.SaveOrUpdate(employee);
+                this.employeeRepository.DbContext.CommitChanges();
+            }
+            else
+            {
+                this.employeeRepository.DbContext.RollbackTransaction();
+            }
+        }
+
+        public void RiaCreateOrUpdate(Employee employee, string availableTerritories)
+        {
+            employee.Territories.Clear();
+
+            foreach (var territory in availableTerritories.Split(',')) 
+            {
+                // Large performance gains if you offload these type of queries to NHSearch or a document db
+                var hydratedTerritory =
+                    this.territoryRepository.GetAll().Where(x => x.Description.Contains(territory)).FirstOrDefault();
+
+                if (hydratedTerritory != null) 
+                {
+                    employee.Territories.Add(hydratedTerritory);
+                }
+                
             }
 
             if (employee.IsValid())

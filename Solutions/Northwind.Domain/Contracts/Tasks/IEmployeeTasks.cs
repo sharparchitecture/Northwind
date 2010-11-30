@@ -8,6 +8,8 @@
     {
         void CreateOrUpdate(Employee employee);
 
+        void RiaCreateOrUpdate(Employee employee, string availableTerritories);
+
         void Delete(int id);
 
         IList<Employee> GetAllEmployees();

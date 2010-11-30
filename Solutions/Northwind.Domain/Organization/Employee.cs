@@ -55,6 +55,18 @@ namespace Northwind.Domain.Organization
         [JsonProperty]
         public virtual IList<Territory> Territories { get; protected set; }
 
+        [JsonProperty]
+        public virtual bool Valid
+        {
+            get { return IsValid(); }
+        }
+
+        [JsonProperty]
+        public virtual ICollection<SharpArch.Core.CommonValidator.IValidationResult> ValidationResultsJson
+        {
+            get { return ValidationResults(); }
+        }
+
         private void InitMembers()
         {
             // Init the collection so it's never null

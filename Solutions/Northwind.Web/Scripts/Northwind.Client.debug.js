@@ -14,12 +14,16 @@ Northwind.Client.EmployeeModule = function Northwind_Client_EmployeeModule() {
     /// </field>
     /// <field name="_selectedEmployee" type="Northwind.Client.Models.Employee">
     /// </field>
+    /// <field name="_employeeService" type="Northwind.Client.Models.IEmployeeService">
+    /// </field>
     this._initialize();
     this._registerClickHandlers();
+    this._employeeService = new Northwind.Client.Models.EmployeeService();
 }
 Northwind.Client.EmployeeModule.prototype = {
     _employeeViewModel: null,
     _selectedEmployee: null,
+    _employeeService: null,
     
     get_selectedEmployee: function Northwind_Client_EmployeeModule$get_selectedEmployee() {
         /// <value type="Northwind.Client.Models.Employee"></value>
@@ -70,9 +74,7 @@ Northwind.Client.EmployeeModule.prototype = {
                 this._initialize();
                 return;
             }
-            var employeeService = new Northwind.Client.Models.EmployeeService();
-            employeeService.showValidationResults(employee);
-            $('#employee-save').attr('disabled', 'false');
+            this._employeeService.showValidationResults(employee);
         }));
     },
     
@@ -80,8 +82,7 @@ Northwind.Client.EmployeeModule.prototype = {
         /// <param name="eventHandler" type="jQueryEvent">
         /// </param>
         this._getCurrentEmployeeFromRow(eventHandler.currentTarget.getAttribute('employeeId').toString());
-        var employeeService = new Northwind.Client.Models.EmployeeService();
-        employeeService.displayForm(this.get_selectedEmployee());
+        this._employeeService.displayForm(this.get_selectedEmployee());
     },
     
     _remove: function Northwind_Client_EmployeeModule$_remove(eventHandler) {
@@ -252,6 +253,7 @@ Northwind.Client.Models.EmployeeService.prototype = {
                 $('#PhoneExtension').append('<div class=\"error-message\">' + validationResult.Message + '</div>');
             }
         }
+        $('#employee-save').attr('disabled', String.Empty);
     }
 }
 

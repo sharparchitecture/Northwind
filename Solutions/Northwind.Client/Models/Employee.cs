@@ -79,6 +79,8 @@ namespace Northwind.Client.Models
                     jQuery.Select("#PhoneExtension").Append("<div class=\"error-message\">" + validationResult.Message + "</div>");
                 }
             }
+
+            jQuery.Select("#employee-save").Attribute("disabled", string.Empty);
         }
     }
 }
