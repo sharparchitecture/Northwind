@@ -50,15 +50,15 @@ namespace Northwind.Tasks
 
             foreach (var territory in availableTerritories.Split(',')) 
             {
-                // Large performance gains if you offload these type of queries to NHSearch or a document db
+                // Depending on how you're accepting user input, better to use NHSearch for quicker
+                // queries.
                 var hydratedTerritory =
-                    this.territoryRepository.GetAll().Where(x => x.Description.Contains(territory)).FirstOrDefault();
+                    this.territoryRepository.GetAll().Where(x => x.Description.Contains(territory.Trim())).FirstOrDefault();
 
                 if (hydratedTerritory != null) 
                 {
                     employee.Territories.Add(hydratedTerritory);
                 }
-                
             }
 
             if (employee.IsValid())
