@@ -16,36 +16,39 @@ Northwind.Client.EmployeeModule = function Northwind_Client_EmployeeModule() {
     /// </field>
     /// <field name="_employeeService" type="Northwind.Client.Models.IEmployeeService">
     /// </field>
+    /// <field name="_territoryService" type="Northwind.Client.Models.ITerritoryService">
+    /// </field>
+    this._employeeService = new Northwind.Client.Models.EmployeeService();
+    this._territoryService = new Northwind.Client.Models.TerritoryService();
     this._initialize();
     this._registerClickHandlers();
-    this._employeeService = new Northwind.Client.Models.EmployeeService();
 }
 Northwind.Client.EmployeeModule.prototype = {
     _employeeViewModel: null,
     _selectedEmployee: null,
     _employeeService: null,
+    _territoryService: null,
     
     get_selectedEmployee: function Northwind_Client_EmployeeModule$get_selectedEmployee() {
         /// <value type="Northwind.Client.Models.Employee"></value>
         return this._selectedEmployee;
     },
+    set_selectedEmployee: function Northwind_Client_EmployeeModule$set_selectedEmployee(value) {
+        /// <value type="Northwind.Client.Models.Employee"></value>
+        this._selectedEmployee = value;
+        return value;
+    },
     
-    territorySuggestions: function Northwind_Client_EmployeeModule$territorySuggestions(eventHandler) {
-        /// <param name="eventHandler" type="jQueryEvent">
-        /// </param>
-        $('#suggestions').empty();
-        var territoryInput = eventHandler.currentTarget;
-        var territoryArray = territoryInput.value.split(',');
-        for (var index = 0; index < this._employeeViewModel.AvailableTerritories.length; index++) {
-            if (index > 2) {
-                break;
-            }
-            var availableTerritory = this._employeeViewModel.AvailableTerritories[index];
-            var r = new RegExp(territoryArray[territoryArray.length - 1].trim(), 'i');
-            if (availableTerritory.Description.search(r) !== -1) {
-                $('#suggestions').append($('<div style=\"margin-left:7px;\">' + availableTerritory.Description + '</div>'));
-            }
-        }
+    get_employeeViewModel: function Northwind_Client_EmployeeModule$get_employeeViewModel() {
+        /// <value type="Northwind.Client.Models.EmployeeViewModel"></value>
+        return this._employeeViewModel;
+    },
+    set_employeeViewModel: function Northwind_Client_EmployeeModule$set_employeeViewModel(value) {
+        /// <value type="Northwind.Client.Models.EmployeeViewModel"></value>
+        this._employeeViewModel = value;
+        this._territoryService.setViewModel(value);
+        this._renderTable();
+        return value;
     },
     
     _registerClickHandlers: function Northwind_Client_EmployeeModule$_registerClickHandlers() {
@@ -54,15 +57,12 @@ Northwind.Client.EmployeeModule.prototype = {
         $('#edit').live('click', ss.Delegate.create(this, this._edit));
         $('#delete').live('click', ss.Delegate.create(this, this._remove));
         $('#details').live('click', ss.Delegate.create(this, this._details));
-        $('#TerritoriesAutoSuggest').live('keyup', ss.Delegate.create(this, this.territorySuggestions));
     },
     
     _initialize: function Northwind_Client_EmployeeModule$_initialize() {
         $('#loading').show();
         $.getJSON('EmployeeRia/GetEmployeeFormViewModel', ss.Delegate.create(this, function(response) {
-            var viewModel = response;
-            this._employeeViewModel = viewModel;
-            this._renderTable(viewModel);
+            this.set_employeeViewModel(response);
         }));
     },
     
@@ -72,8 +72,7 @@ Northwind.Client.EmployeeModule.prototype = {
         eventHandler.preventDefault();
         if (eventHandler.currentTarget.id === 'create-employee') {
             var employee = new Northwind.Client.Models.Employee();
-            var employeeService = new Northwind.Client.Models.EmployeeService();
-            employeeService.displayForm(employee);
+            this._employeeService.displayForm(employee);
             return;
         }
         $('.error-message').remove();
@@ -93,80 +92,58 @@ Northwind.Client.EmployeeModule.prototype = {
     _edit: function Northwind_Client_EmployeeModule$_edit(eventHandler) {
         /// <param name="eventHandler" type="jQueryEvent">
         /// </param>
-        this._getCurrentEmployeeFromRow(eventHandler.currentTarget.getAttribute('employeeId').toString());
+        this._getCurrentEmployeeById(eventHandler.currentTarget.getAttribute('employeeId').toString());
         this._employeeService.displayForm(this.get_selectedEmployee());
     },
     
     _remove: function Northwind_Client_EmployeeModule$_remove(eventHandler) {
         /// <param name="eventHandler" type="jQueryEvent">
         /// </param>
-        this._getCurrentEmployeeFromRow(eventHandler.currentTarget.getAttribute('employeeId').toString());
+        this._getCurrentEmployeeById(eventHandler.currentTarget.getAttribute('employeeId').toString());
         $.post('EmployeeRia/Delete/' + this.get_selectedEmployee().Id, ss.Delegate.create(this, function(response) {
-            var employees = response;
-            this._employeeViewModel.Employees = employees;
-            this._renderTable(this._employeeViewModel);
+            this.get_employeeViewModel().Employees = response;
+            this._renderTable();
         }));
     },
     
     _details: function Northwind_Client_EmployeeModule$_details(eventHandler) {
         /// <param name="eventHandler" type="jQueryEvent">
         /// </param>
-        this._getCurrentEmployeeFromRow(eventHandler.currentTarget.getAttribute('employeeId').toString());
+        this._getCurrentEmployeeById(eventHandler.currentTarget.getAttribute('employeeId').toString());
         var employeeDetails = $.tmpl($('#employee-detail-tmpl').html(), this.get_selectedEmployee());
         $('#main').append(employeeDetails);
         $('#employee-detail').dialog({minWidth:500,close: function(event, ui){$(this).dialog('destroy').remove();}});
     },
     
-    _getCurrentEmployeeFromRow: function Northwind_Client_EmployeeModule$_getCurrentEmployeeFromRow(id) {
+    _getCurrentEmployeeById: function Northwind_Client_EmployeeModule$_getCurrentEmployeeById(id) {
         /// <param name="id" type="String">
         /// </param>
         var $enum1 = ss.IEnumerator.getEnumerator(this._employeeViewModel.Employees);
         while ($enum1.moveNext()) {
             var employee = $enum1.get_current();
-            if (employee.Id.toString() === id.toString()) {
-                employee.TerritoriesString = this._territoriestoCSV(employee.Territories);
-                this._selectedEmployee = employee;
+            if (employee.Id.toString() === id) {
+                employee.TerritoriesString = this._territoryService.territoriestoCSV(employee.Territories);
+                this.set_selectedEmployee(employee);
                 break;
             }
         }
     },
     
-    _territoriestoCSV: function Northwind_Client_EmployeeModule$_territoriestoCSV(territories) {
-        /// <param name="territories" type="Array" elementType="Object">
-        /// </param>
-        /// <returns type="String"></returns>
-        var territoriesCommaString = new String();
-        for (var index = 0; index < territories.length; index++) {
-            var territory = territories[index];
-            if (index === territories.length - 1) {
-                territoriesCommaString = territoriesCommaString + territory.Description.trim();
-            }
-            else {
-                territoriesCommaString = territoriesCommaString + territory.Description.trim() + ', ';
-            }
-        }
-        return territoriesCommaString;
-    },
-    
-    _renderTable: function Northwind_Client_EmployeeModule$_renderTable(employeeViewModel) {
-        /// <param name="employeeViewModel" type="Northwind.Client.Models.EmployeeViewModel">
-        /// </param>
-        if ((employeeViewModel.Employees.length === 0 & employeeViewModel.AvailableTerritories.length === 0) === 1) {
+    _renderTable: function Northwind_Client_EmployeeModule$_renderTable() {
+        if ((this.get_employeeViewModel().Employees.length === 0 & this.get_employeeViewModel().AvailableTerritories.length === 0) === 1) {
             return;
         }
         $('#main').empty();
-        this._attachTemplates(employeeViewModel);
+        this._attachTemplates();
         $('#loading').hide();
     },
     
-    _attachTemplates: function Northwind_Client_EmployeeModule$_attachTemplates(employeeViewModel) {
-        /// <param name="employeeViewModel" type="Northwind.Client.Models.EmployeeViewModel">
-        /// </param>
+    _attachTemplates: function Northwind_Client_EmployeeModule$_attachTemplates() {
         var slug = new Boolean();
         $('#main').empty();
         var employeeTable = $.tmpl($('#employees-table-tmpl').html(), slug);
         $('#main').append(employeeTable);
-        var $enum1 = ss.IEnumerator.getEnumerator(this._employeeViewModel.Employees);
+        var $enum1 = ss.IEnumerator.getEnumerator(this.get_employeeViewModel().Employees);
         while ($enum1.moveNext()) {
             var employee = $enum1.get_current();
             var employeeRow = $.tmpl($('#employees-table-row-tmpl').html(), employee);
@@ -201,6 +178,19 @@ Northwind.Client.Models.IEmployeeService.registerInterface('Northwind.Client.Mod
 
 
 ////////////////////////////////////////////////////////////////////////////////
+// Northwind.Client.Models.ITerritoryService
+
+Northwind.Client.Models.ITerritoryService = function() { 
+};
+Northwind.Client.Models.ITerritoryService.prototype = {
+    territorySuggestions : null,
+    setViewModel : null,
+    territoriestoCSV : null
+}
+Northwind.Client.Models.ITerritoryService.registerInterface('Northwind.Client.Models.ITerritoryService');
+
+
+////////////////////////////////////////////////////////////////////////////////
 // Northwind.Client.Models.Employee
 
 Northwind.Client.Models.Employee = function Northwind_Client_Models_Employee() {
@@ -212,7 +202,7 @@ Northwind.Client.Models.Employee = function Northwind_Client_Models_Employee() {
     /// </field>
     /// <field name="PhoneExtension" type="Number" integer="true">
     /// </field>
-    /// <field name="Territories" type="Array" elementType="Object">
+    /// <field name="Territories" type="Array" elementType="Territory">
     /// </field>
     /// <field name="TerritoriesString" type="String">
     /// </field>
@@ -276,7 +266,7 @@ Northwind.Client.Models.EmployeeService.prototype = {
 Northwind.Client.Models.EmployeeViewModel = function Northwind_Client_Models_EmployeeViewModel() {
     /// <field name="Employees" type="Array" elementType="Employee">
     /// </field>
-    /// <field name="AvailableTerritories" type="Array" elementType="Object">
+    /// <field name="AvailableTerritories" type="Array" elementType="Territory">
     /// </field>
 }
 Northwind.Client.Models.EmployeeViewModel.prototype = {
@@ -285,11 +275,105 @@ Northwind.Client.Models.EmployeeViewModel.prototype = {
 }
 
 
+////////////////////////////////////////////////////////////////////////////////
+// Northwind.Client.Models.Territory
+
+Northwind.Client.Models.Territory = function Northwind_Client_Models_Territory() {
+    /// <field name="Description" type="String">
+    /// </field>
+    /// <field name="RegionBelongingTo" type="Object">
+    /// </field>
+    Northwind.Client.Models.Territory.initializeBase(this);
+}
+Northwind.Client.Models.Territory.prototype = {
+    Description: null,
+    RegionBelongingTo: null
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Northwind.Client.Models.TerritoryService
+
+Northwind.Client.Models.TerritoryService = function Northwind_Client_Models_TerritoryService() {
+    /// <field name="employeeViewModel" type="Northwind.Client.Models.EmployeeViewModel">
+    /// </field>
+    this._registerClickHandlers();
+}
+Northwind.Client.Models.TerritoryService.prototype = {
+    employeeViewModel: null,
+    
+    _registerClickHandlers: function Northwind_Client_Models_TerritoryService$_registerClickHandlers() {
+        $('#TerritoriesAutoSuggest').live('keyup', ss.Delegate.create(this, this.territorySuggestions));
+        $(document).click(ss.Delegate.create(this, function(e) {
+            if (e.currentTarget.id !== 'suggestions') {
+                $('#suggestions').children().remove();
+            }
+        }));
+        $('.child-suggestion').live('click', ss.Delegate.create(this, this.addTerritoryToInput));
+    },
+    
+    setViewModel: function Northwind_Client_Models_TerritoryService$setViewModel(viewModel) {
+        /// <param name="viewModel" type="Northwind.Client.Models.EmployeeViewModel">
+        /// </param>
+        this.employeeViewModel = viewModel;
+    },
+    
+    territorySuggestions: function Northwind_Client_Models_TerritoryService$territorySuggestions(eventHandler) {
+        /// <param name="eventHandler" type="jQueryEvent">
+        /// </param>
+        eventHandler.preventDefault();
+        $('#suggestions').empty();
+        var territoryInput = eventHandler.currentTarget;
+        var territoryArray = territoryInput.value.split(',');
+        var counter = 0;
+        for (var index = 0; index < this.employeeViewModel.AvailableTerritories.length; index++) {
+            if (counter > 2) {
+                break;
+            }
+            var availableTerritory = this.employeeViewModel.AvailableTerritories[index];
+            var r = new RegExp(territoryArray[territoryArray.length - 1].trim(), 'i');
+            if (availableTerritory.Description.search(r) !== -1) {
+                $('#suggestions').append($('<div style=\"margin-left:7px;\" class=\"child-suggestion\">' + availableTerritory.Description + '</div>'));
+                counter = counter + 1;
+            }
+        }
+    },
+    
+    territoriestoCSV: function Northwind_Client_Models_TerritoryService$territoriestoCSV(territories) {
+        /// <param name="territories" type="Array" elementType="Territory">
+        /// </param>
+        /// <returns type="String"></returns>
+        var territoriesCommaString = new String();
+        for (var index = 0; index < territories.length; index++) {
+            var territory = territories[index];
+            if (index === territories.length - 1) {
+                territoriesCommaString = territoriesCommaString + territory.Description.trim();
+            }
+            else {
+                territoriesCommaString = territoriesCommaString + territory.Description.trim() + ', ';
+            }
+        }
+        return territoriesCommaString;
+    },
+    
+    addTerritoryToInput: function Northwind_Client_Models_TerritoryService$addTerritoryToInput(eventHandler) {
+        /// <param name="eventHandler" type="jQueryEvent">
+        /// </param>
+        var autoSuggestBox = $('#TerritoriesAutoSuggest');
+        var territoryArray = autoSuggestBox.val().split(',');
+        territoryArray[territoryArray.length - 1] = ' ' + eventHandler.currentTarget.innerHTML.trim() + ', ';
+        $('#TerritoriesAutoSuggest').val(territoryArray.toString());
+    }
+}
+
+
 Northwind.Client.EmployeeModule.registerClass('Northwind.Client.EmployeeModule');
 Northwind.Client.EmployeeRia.registerClass('Northwind.Client.EmployeeRia');
 Northwind.Client.Models.Employee.registerClass('Northwind.Client.Models.Employee', Object);
 Northwind.Client.Models.EmployeeService.registerClass('Northwind.Client.Models.EmployeeService', null, Northwind.Client.Models.IEmployeeService);
 Northwind.Client.Models.EmployeeViewModel.registerClass('Northwind.Client.Models.EmployeeViewModel');
+Northwind.Client.Models.Territory.registerClass('Northwind.Client.Models.Territory', Object);
+Northwind.Client.Models.TerritoryService.registerClass('Northwind.Client.Models.TerritoryService', null, Northwind.Client.Models.ITerritoryService);
 
 }
 ss.loader.registerScript('Northwind.Client', [], executeScript);

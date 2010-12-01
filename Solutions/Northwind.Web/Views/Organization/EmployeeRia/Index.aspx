@@ -2,16 +2,19 @@
 <asp:Content ContentPlaceHolderID="head" runat="server">
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	<script type="text/javascript">
-	    google.load("jquery", "1.4.2");
-	    google.load("jqueryui", "1.8.5", { uncompressed: true });
-    </script>
-    
+	    google.load("jquery", "1.4.4");
+	    google.load("jqueryui", "1.8.5");
+    </script>    
     
     <script src="<%= Url.Content("~/Scripts/jquery.tmpl.js") %>" type="text/javascript"></script>    
     <script src="<%= Url.Content("~/Scripts/mscorlib.js") %>" type="text/javascript"></script>
     <script src="<%= Url.Content("~/Scripts/Northwind.Client.debug.js") %>" type="text/javascript"></script>
     
-    <link href="../../Content/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css" />
+    <link href="<%= Url.Content("~/Content/jquery-ui-1.8.6.custom.css") %>" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+    .child-suggestion:hover { cursor:pointer; background-color: Yellow; }
+    </style>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <div id="loading" style="display:none;">Loading ...</div>    
