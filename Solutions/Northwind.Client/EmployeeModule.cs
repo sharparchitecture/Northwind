@@ -64,6 +64,12 @@ namespace Northwind.Client
             jQuery.Select("#edit").Live("click", this.Edit);
             jQuery.Select("#delete").Live("click", this.Remove);
             jQuery.Select("#details").Live("click", this.Details);
+            jQuery.Select("#TerritoriesAutoSuggest").Live("keyup", this.territoryService.TerritorySuggestions);
+
+            jQuery.Document.Click(delegate(jQueryEvent e)
+                                            {
+                                                jQuery.Select("#suggestions").Remove();
+                                            });
         }
 
         private void Initialize()
@@ -197,7 +203,8 @@ namespace Northwind.Client
             jQueryObject employeeTable = jQueryTemplating.RenderTemplate(jQuery.Select("#employees-table-tmpl").GetHtml(), slug);
             jQuery.Select("#main").Append(employeeTable);
 
-            foreach (Employee employee in this.EmployeeViewModel.Employees) {
+            foreach (Employee employee in this.EmployeeViewModel.Employees) 
+            {
                 jQueryObject employeeRow = jQueryTemplating.RenderTemplate(jQuery.Select("#employees-table-row-tmpl").GetHtml(), employee);
                 jQuery.Select("#employees-table tbody").Append(employeeRow);
             }
