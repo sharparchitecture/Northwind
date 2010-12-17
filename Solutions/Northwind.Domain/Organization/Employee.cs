@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
-
 namespace Northwind.Domain.Organization
 {
     using System;
     using System.Collections.Generic;
 
+    using Newtonsoft.Json;
     using NHibernate.Validator.Constraints;
 
     using SharpArch.Core.DomainModel;
