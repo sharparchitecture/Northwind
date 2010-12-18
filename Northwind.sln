@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Generation", "Code Generation", "{66143917-5D9F-4B23-AD89-C2B0C3C68345}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Core", "app\Northwind.Core\Northwind.Core.csproj", "{968B265E-AF3B-4153-B996-6EC4E83D9616}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Data", "app\Northwind.Data\Northwind.Data.csproj", "{AAB1B13C-653C-4764-9360-4DA67F4CC959}"
@@ -10,8 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Tests", "tests\Northwind.Tests\Northwind.Tests.csproj", "{C64AADC4-A54B-484B-A926-3CC425D17A10}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.TestsUsingDevelopmentDatabase", "tests\Northwind.TestsUsingDevelopmentDatabase\Northwind.TestsUsingDevelopmentDatabase.csproj", "{467AE9B7-4107-4671-B0CA-A876150C69F2}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Generation", "Code Generation", "{66143917-5D9F-4B23-AD89-C2B0C3C68345}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudScaffolding", "tools\CrudScaffolding\CrudScaffolding.csproj", "{F506AAD6-2118-4D9A-967B-71DF003F812A}"
 EndProject

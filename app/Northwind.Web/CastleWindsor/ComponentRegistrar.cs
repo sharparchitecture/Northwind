@@ -12,10 +12,11 @@ using SharpArch.Core.NHibernateValidator.CommonValidatorAdapter;
 using Castle.Core.Configuration;
 using Castle.Core;
 using Castle.Facilities.FactorySupport;
-using Castle.Core.Interceptor;
 
 namespace Northwind.Web.CastleWindsor
 {
+    using Castle.DynamicProxy;
+
     public class ComponentRegistrar
     {
         public static void AddComponentsTo(IWindsorContainer container) {

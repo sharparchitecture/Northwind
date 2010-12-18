@@ -6,7 +6,6 @@ using System.Web.Routing;
 using Castle.Windsor;
 using CommonServiceLocator.WindsorAdapter;
 using Microsoft.Practices.ServiceLocation;
-using MvcContrib.Castle;
 using Northwind.Data.NHibernateMaps;
 using Northwind.Web.CastleWindsor;
 using Northwind.Web.Controllers;
@@ -18,6 +17,8 @@ using SharpArch.Web.NHibernate;
 
 namespace Northwind.Web
 {
+    using SharpArch.Web.Castle;
+
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
