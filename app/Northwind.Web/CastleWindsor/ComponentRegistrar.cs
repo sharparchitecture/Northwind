@@ -25,52 +25,80 @@ namespace Northwind.Web.CastleWindsor
             AddApplicationServicesTo(container);
             AddWcfServiceFactoriesTo(container);
 
-            container.AddComponent("validator",
-                typeof(IValidator), typeof(Validator));
+            container.Register(
+                Component
+                    .For(typeof(IValidator))
+                    .ImplementedBy(typeof(Validator))
+                    .Named("validator"));
         }
 
         private static void AddApplicationServicesTo(IWindsorContainer container) {
             container.Register(
-                AllTypes.Pick()
+                AllTypes
                 .FromAssemblyNamed("Northwind.ApplicationServices")
+                .Pick()
                 .WithService.FirstInterface());
         }
 
         private static void AddWcfServiceFactoriesTo(IWindsorContainer container)
         {
             container.AddFacility("factories", new FactorySupportFacility());
-            container.AddComponent("standard.interceptor", typeof(StandardInterceptor));
+            container.Register(Component.For(typeof(StandardInterceptor)).Named("standard.interceptor"));
 
             string factoryKey = "territoriesWcfServiceFactory";
             string serviceKey = "territoriesWcfService";
 
-            container.AddComponent(factoryKey, typeof(TerritoriesWcfServiceFactory));
+            container.Register(Component.For(typeof(TerritoriesWcfServiceFactory)).Named(factoryKey));
             MutableConfiguration config = new MutableConfiguration(serviceKey);
             config.Attributes["factoryId"] = factoryKey;
             config.Attributes["factoryCreate"] = "Create";
             container.Kernel.ConfigurationStore.AddComponentConfiguration(serviceKey, config);
-            container.Kernel.AddComponent(serviceKey, typeof(ITerritoriesWcfService),
-                typeof(TerritoriesWcfServiceClient), LifestyleType.PerWebRequest);
+            container.Register(
+                    Component
+                        .For(typeof(ITerritoriesWcfService))
+                        .ImplementedBy(typeof(TerritoriesWcfServiceClient))
+                        .LifeStyle.Is(LifestyleType.PerWebRequest));
+            
         }
 
         private static void AddCustomRepositoriesTo(IWindsorContainer container) {
             container.Register(
-                AllTypes.Pick()
+                AllTypes
                 .FromAssemblyNamed("Northwind.Data")
+                .Pick()
                 .WithService.FirstNonGenericCoreInterface("Northwind.Core"));
         }
 
         private static void AddGenericRepositoriesTo(IWindsorContainer container) {
-            container.AddComponent("entityDuplicateChecker",
-                typeof(IEntityDuplicateChecker), typeof(EntityDuplicateChecker));
-            container.AddComponent("repositoryType",
-                typeof(IRepository<>), typeof(Repository<>));
-            container.AddComponent("nhibernateRepositoryType",
-                typeof(INHibernateRepository<>), typeof(NHibernateRepository<>));
-            container.AddComponent("repositoryWithTypedId",
-                typeof(IRepositoryWithTypedId<,>), typeof(RepositoryWithTypedId<,>));
-            container.AddComponent("nhibernateRepositoryWithTypedId",
-                typeof(INHibernateRepositoryWithTypedId<,>), typeof(NHibernateRepositoryWithTypedId<,>));
+            container.Register(
+                    Component
+                        .For(typeof(IEntityDuplicateChecker))
+                        .ImplementedBy(typeof(EntityDuplicateChecker))
+                        .Named("entityDuplicateChecker"));
+
+            container.Register(
+                    Component
+                        .For(typeof(IRepository<>))
+                        .ImplementedBy(typeof(Repository<>))
+                        .Named("repositoryType"));
+
+            container.Register(
+                    Component
+                        .For(typeof(INHibernateRepository<>))
+                        .ImplementedBy(typeof(NHibernateRepository<>))
+                        .Named("nhibernateRepositoryType"));
+
+            container.Register(
+                    Component
+                        .For(typeof(IRepositoryWithTypedId<,>))
+                        .ImplementedBy(typeof(RepositoryWithTypedId<,>))
+                        .Named("repositoryWithTypedId"));
+
+            container.Register(
+                    Component
+                        .For(typeof(INHibernateRepositoryWithTypedId<,>))
+                        .ImplementedBy(typeof(NHibernateRepositoryWithTypedId<,>))
+                        .Named("nhibernateRepositoryWithTypedId"));
         }
     }
 }

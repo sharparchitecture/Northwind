@@ -8,15 +8,25 @@ using Tests.Northwind.Data.TestDoubles;
 
 namespace Tests
 {
+    using Castle.MicroKernel.Registration;
+
     public class ServiceLocatorInitializer
     {
         public static void Init()
         {
             IWindsorContainer container = new WindsorContainer();
-            container.AddComponent("validator",
-                typeof(IValidator), typeof(Validator));
-            container.AddComponent("entityDuplicateChecker",
-                typeof(IEntityDuplicateChecker), typeof(EntityDuplicateCheckerStub));
+            container.Register(
+                    Component
+                        .For(typeof(IValidator))
+                        .ImplementedBy(typeof(Validator))
+                        .Named("validator"));
+
+            container.Register(
+                    Component
+                        .For(typeof(IEntityDuplicateChecker))
+                        .ImplementedBy(typeof(EntityDuplicateCheckerStub))
+                        .Named("entityDuplicateChecker"));
+
             ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(container));
         }
     }

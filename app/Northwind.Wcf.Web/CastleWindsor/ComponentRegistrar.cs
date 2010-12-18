@@ -22,28 +22,44 @@
         private static void AddCustomRepositoriesTo(IWindsorContainer container)
         {
             container.Register(
-                AllTypes.Pick().FromAssemblyNamed("Northwind.Infrastructure").WithService.FirstNonGenericCoreInterface(
-                    "Northwind.Domain"));
+                AllTypes
+                    .FromAssemblyNamed("Northwind.Infrastructure")
+                    .Pick()
+                    .WithService.FirstNonGenericCoreInterface("Northwind.Domain"));
         }
 
         private static void AddGenericRepositoriesTo(IWindsorContainer container)
         {
-            container.AddComponent("repositoryType", typeof(IRepository<>), typeof(Repository<>));
-            container.AddComponent(
-                "nhibernateRepositoryType", typeof(INHibernateRepository<>), typeof(NHibernateRepository<>));
-            container.AddComponent(
-                "repositoryWithTypedId", typeof(IRepositoryWithTypedId<,>), typeof(RepositoryWithTypedId<,>));
-            container.AddComponent(
-                "nhibernateRepositoryWithTypedId",
-                typeof(INHibernateRepositoryWithTypedId<,>),
-                typeof(NHibernateRepositoryWithTypedId<,>));
+            container.Register(
+                    Component
+                        .For(typeof(IRepository<>))
+                        .ImplementedBy(typeof(Repository<>))
+                        .Named("repositoryType"));
+
+            container.Register(
+                    Component
+                        .For(typeof(INHibernateRepository<>))
+                        .ImplementedBy(typeof(NHibernateRepository<>))
+                        .Named("nhibernateRepositoryType"));
+
+            container.Register(
+                    Component
+                        .For(typeof(IRepositoryWithTypedId<,>))
+                        .ImplementedBy(typeof(RepositoryWithTypedId<,>))
+                        .Named("repositoryWithTypedId"));
+
+            container.Register(
+                    Component
+                        .For(typeof(INHibernateRepositoryWithTypedId<,>))
+                        .ImplementedBy(typeof(NHibernateRepositoryWithTypedId<,>))
+                        .Named("nhibernateRepositoryWithTypedId"));
         }
 
         private static void AddWcfServicesTo(IWindsorContainer container)
         {
             // Since the TerritoriesService.svc must be associated with a concrete class,
             // we must register the concrete implementation here as the service
-            container.AddComponent("territoriesWcfService", typeof(TerritoriesWcfService));
+            container.Register(Component.For(typeof(TerritoriesWcfService)).Named("territoriesWcfService"));
         }
     }
 }
