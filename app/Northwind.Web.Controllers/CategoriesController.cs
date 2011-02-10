@@ -1,14 +1,12 @@
-﻿using System.Web.Mvc;
-using Northwind.Core;
-using SharpArch.Core.PersistenceSupport;
-using SharpArch.Core.DomainModel;
-using System.Collections.Generic;
-using SharpArch.Web.NHibernate;
-using System;
-using SharpArch.Core;
-
-namespace Northwind.Web.Controllers
+﻿namespace Northwind.Web.Controllers
 {
+    using System.Collections.Generic;
+    using System.Web.Mvc;
+    using Core;
+    using SharpArch.Core;
+    using SharpArch.Core.PersistenceSupport;
+    using SharpArch.Web.NHibernate;
+
     [HandleError]
     public class CategoriesController : Controller
     {
