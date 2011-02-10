@@ -23,7 +23,7 @@
         {
             container.Register(
                 AllTypes
-                    .FromAssemblyNamed("Northwind.Infrastructure")
+                    .FromAssemblyNamed("Northwind.Data")
                     .Pick()
                     .WithService.FirstNonGenericCoreInterface("Northwind.Domain"));
         }
