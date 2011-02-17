@@ -78,12 +78,6 @@ namespace Northwind.Web.CastleWindsor
 
             container.Register(
                     Component
-                        .For(typeof(ISessionFactoryKeyProvider))
-                        .ImplementedBy(typeof(DefaultSessionFactoryKeyProvider))
-                        .Named("sessionFactoryKeyProvider"));
-
-            container.Register(
-                    Component
                         .For(typeof(IEntityDuplicateChecker))
                         .ImplementedBy(typeof(EntityDuplicateChecker))
                         .Named("entityDuplicateChecker"));
