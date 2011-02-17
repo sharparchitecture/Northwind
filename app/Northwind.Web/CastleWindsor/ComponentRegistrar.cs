@@ -40,8 +40,7 @@ namespace Northwind.Web.CastleWindsor
                 .WithService.FirstInterface());
         }
 
-        private static void AddWcfServiceFactoriesTo(IWindsorContainer container)
-        {
+        private static void AddWcfServiceFactoriesTo(IWindsorContainer container) {
             container.AddFacility("factories", new FactorySupportFacility());
             container.Register(Component.For(typeof(StandardInterceptor)).Named("standard.interceptor"));
 
@@ -70,7 +69,6 @@ namespace Northwind.Web.CastleWindsor
         }
 
         private static void AddGenericRepositoriesTo(IWindsorContainer container) {
-
             container.Register(
                     Component
                         .For(typeof(ISessionFactoryKeyProvider))
