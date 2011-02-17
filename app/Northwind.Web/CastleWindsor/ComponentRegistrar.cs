@@ -69,6 +69,13 @@ namespace Northwind.Web.CastleWindsor
         }
 
         private static void AddGenericRepositoriesTo(IWindsorContainer container) {
+
+            container.Register(
+                    Component
+                        .For(typeof(ISessionFactoryKeyProvider))
+                        .ImplementedBy(typeof(DefaultSessionFactoryKeyProvider))
+                        .Named("sessionFactoryKeyProvider"));
+
             container.Register(
                     Component
                         .For(typeof(ISessionFactoryKeyProvider))
