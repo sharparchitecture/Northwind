@@ -59,6 +59,7 @@ namespace Northwind.Client.Models
         {
             eventHandler.PreventDefault();
             jQuery.Select("#suggestions").Empty();
+            jQuery.Select("#suggestions").Show();
             InputElement territoryInput = (InputElement)eventHandler.CurrentTarget;
 
             string[] territoryArray = territoryInput.Value.Split(',');

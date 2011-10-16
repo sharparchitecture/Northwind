@@ -68,7 +68,7 @@ namespace Northwind.Client
 
             jQuery.Document.Click(delegate(jQueryEvent e)
                                             {
-                                                jQuery.Select("#suggestions").Remove();
+                                                jQuery.Select("#suggestions").Hide();
                                             });
         }
 

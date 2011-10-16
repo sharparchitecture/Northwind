@@ -59,7 +59,7 @@ Northwind.Client.EmployeeModule.prototype = {
         $('#details').live('click', ss.Delegate.create(this, this._details));
         $('#TerritoriesAutoSuggest').live('keyup', ss.Delegate.create(this._territoryService, this._territoryService.territorySuggestions));
         $(document).click(ss.Delegate.create(this, function(e) {
-            $('#suggestions').remove();
+            $('#suggestions').hide();
         }));
     },
     
@@ -327,6 +327,7 @@ Northwind.Client.Models.TerritoryService.prototype = {
         /// </param>
         eventHandler.preventDefault();
         $('#suggestions').empty();
+        $('#suggestions').show();
         var territoryInput = eventHandler.currentTarget;
         var territoryArray = territoryInput.value.split(',');
         var counter = 0;
