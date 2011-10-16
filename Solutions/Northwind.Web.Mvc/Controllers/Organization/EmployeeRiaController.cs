@@ -17,34 +17,44 @@
         private readonly IEmployeeTasks employeeTasks;
         private readonly ITerritoryTasks territoryTasks;
 
-        public EmployeeRiaController(IEmployeeTasks employeeTasks, ITerritoryTasks territoryTasks) 
+        public EmployeeRiaController(IEmployeeTasks employeeTasks, ITerritoryTasks territoryTasks)
         {
             this.employeeTasks = employeeTasks;
             this.territoryTasks = territoryTasks;
         }
 
         [HttpGet]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
             return View();
         }
 
-        [Transaction]
         [HttpGet]
-        public JsonNetResult GetEmployeeFormViewModel() 
+        public JsonNetResult GetEmployeeFormViewModel()
         {
-            var employeeViewModel = new ViewEmployeesViewModel 
+            var employeeViewModel = new ViewEmployeesViewModel
             {
                 Employees = this.employeeTasks.GetAllEmployees(),
                 AvailableTerritories = this.territoryTasks.GetTerritories()
             };
 
-            return new JsonNetResult { Data = employeeViewModel };
+            var serializer = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                ContractResolver = new NHibernateContractResolver(),
+            };
+
+            return new JsonNetResult
+                {
+                    Data = employeeViewModel,
+                    SerializerSettings = serializer
+                };
         }
 
         [Transaction]
         [HttpPost]
-        public JsonNetResult Edit(CreateEmployeeViewModel createEmployeeViewModel) 
+        public JsonNetResult Edit(CreateEmployeeViewModel createEmployeeViewModel)
         {
             this.employeeTasks.RiaCreateOrUpdate(createEmployeeViewModel.Employee, createEmployeeViewModel.TerritoriesString);
 
@@ -66,10 +76,17 @@
 
         [Transaction]
         [HttpPost]
-        public JsonNetResult Delete(int id) 
+        public JsonNetResult Delete(int id)
         {
             this.employeeTasks.Delete(id);
-            return new JsonNetResult { Data = this.employeeTasks.GetAllEmployees() };
+            var serializer = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                ContractResolver = new NHibernateContractResolver(),
+            };
+
+            return new JsonNetResult { Data = this.employeeTasks.GetAllEmployees(), SerializerSettings = serializer };
         }
     }
 }

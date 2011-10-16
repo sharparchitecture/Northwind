@@ -172,11 +172,13 @@
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="Scripts\jquery.center.js" />
+    <Content Include="Scripts\jquery.tmpl.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\mscorlib.js" />
     <Content Include="Scripts\Northwind.Client.debug.js" />
     <Content Include="Scripts\Northwind.Client.js" />
     <Content Include="Web.config" />
@@ -209,8 +211,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Organization\" />
-    <Folder Include="Views\Organization\Shared\" />
     <Folder Include="Views\Territories\" />
   </ItemGroup>
   <ItemGroup>
@@ -253,25 +253,22 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Organization\EmployeeRia\Index.cshtml" />
+    <Content Include="Views\EmployeeRia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Organization\Employees\CreateOrUpdate.cshtml" />
+    <Content Include="Views\Employees\CreateOrUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Organization\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Organization\Employees\EmployeeForm.cshtml" />
+    <Content Include="Views\Employees\EmployeeForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Organization\Employees\Index.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Organization\Employees\Show.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Organization\Web.config" />
+    <Content Include="Views\Employees\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="NHibernate.config" />

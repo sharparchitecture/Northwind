@@ -1,9 +1,11 @@
 ﻿@using Microsoft.Web.Mvc
 @using Northwind.Web.Mvc.Controllers
-@using Northwind.Web.Mvc.Controllers.Organization<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+@using Northwind.Web.Mvc.Controllers.Organization
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    @(RenderSection("head", false))
 </head>
 <body>
     <div class="page">
@@ -20,6 +22,7 @@
                         <li>@(this.Html.ActionLink<CustomersController>(a => a.Index(), "List Customers with Lazily Loaded Orders"))</li>
                         <li>@(this.Html.ActionLink<EmployeesController>(a => a.Index(), "Employee CRUD with Validation"))</li>
                         <li>@(this.Html.ActionLink<EmployeeRiaController>(a => a.Index(), "Employee CRUD RIA Sample"))</li>
+                        <li>@(this.Html.ActionLink<TerritoriesController>(a => a.Index(), "Territories via Wcf"))</li>
                         <li>@(this.Html.ActionLink<DashboardController>(a => a.Index(), "Dashboard Controller using an 'Application Service'"))</li>                                            
                     </ul>
                 </div>

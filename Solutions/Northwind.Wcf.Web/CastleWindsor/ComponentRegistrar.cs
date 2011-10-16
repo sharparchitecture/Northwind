@@ -26,6 +26,8 @@
 
         private static void AddGenericRepositoriesTo(IWindsorContainer container)
         {
+            container.AddComponent(
+                "sessionFactoryKeyProvider", typeof(ISessionFactoryKeyProvider), typeof(DefaultSessionFactoryKeyProvider));
             container.AddComponent("repositoryType", typeof(IRepository<>), typeof(NHibernateRepository<>));
             container.AddComponent(
                 "nhibernateRepositoryType", typeof(INHibernateRepository<>), typeof(NHibernateRepository<>));

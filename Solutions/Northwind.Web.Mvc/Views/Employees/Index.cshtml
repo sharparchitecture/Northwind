@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Northwind.Domain.Organization.Employee>
+﻿@using Microsoft.Web.Mvc
+@using Northwind.Web.Mvc.Controllers
+@using Northwind.Web.Mvc.Controllers.Organization
+@model IEnumerable<Northwind.Domain.Organization.Employee>
 
 
 
@@ -29,8 +32,8 @@
 				<td>@employee.FirstName</td>
 				<td>@employee.LastName</td>
 				<td>@employee.PhoneExtension</td>
-				<td>@this.Html.ActionLink<EmployeesController>(c => c.Show(employee.Id), "Details ")</td>
-				<td>@this.Html.ActionLink<EmployeesController>(c => c.CreateOrUpdate(employee.Id), "Edit")</td>
+				<td>@(this.Html.ActionLink<EmployeesController>(c => c.Show(employee.Id), "Details "))</td>
+				<td>@(this.Html.ActionLink<EmployeesController>(c => c.CreateOrUpdate(employee.Id), "Edit"))</td>
 				<td>
     				@using (this.Html.BeginForm<EmployeesController>(c => c.Delete(employee.Id)))
             {

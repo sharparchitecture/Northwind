@@ -20,7 +20,7 @@
             </tr>
         </thead>
 		@{
-		    foreach (TerritoryDto territory in this.ViewData.Model)
+		    foreach (var territory in this.ViewData.Model)
       {
 			<tr>
 				<td>@territory.Id</td>
@@ -28,7 +28,7 @@
 				<td>@territory.RegionBelongingTo.Description</td>
 				<td>
 				    <table>
-				        @foreach (EmployeeDto employee in territory.Employees)
+				        @foreach (var employee in territory.Employees)
           {
 				        <tr>
 				            <td>@employee.FirstName @employee.LastName</td>
