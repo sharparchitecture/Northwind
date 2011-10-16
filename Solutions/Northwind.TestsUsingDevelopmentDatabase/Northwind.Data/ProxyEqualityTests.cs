@@ -4,18 +4,18 @@
 
     using NUnit.Framework;
 
-    using SharpArch.Core.PersistenceSupport;
-    using SharpArch.Data.NHibernate;
+    using SharpArch.Domain.PersistenceSupport;
+    using SharpArch.NHibernate;
     using SharpArch.Testing.NUnit.NHibernate;
 
     [TestFixture]
     [Category("DB Tests")]
     public class ProxyEqualityTests : DatabaseRepositoryTestsBase
     {
-        private readonly IRepository<Region> regionRepository = new Repository<Region>();
+        private readonly IRepository<Region> regionRepository = new NHibernateRepository<Region>();
 
         private readonly IRepositoryWithTypedId<Territory, string> territoryRepository =
-            new RepositoryWithTypedId<Territory, string>();
+            new NHibernateRepositoryWithTypedId<Territory, string>();
 
         [Test]
         public void ProxyEqualityTest()

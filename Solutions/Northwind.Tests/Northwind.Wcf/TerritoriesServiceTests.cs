@@ -1,15 +1,19 @@
-﻿using NUnit.Framework;
-using Northwind.Wcf;
-using Northwind.Core;
-using SharpArch.Core.PersistenceSupport;
-using Rhino.Mocks;
-using System.Collections.Generic;
-using SharpArch.Testing;
-using Northwind.Wcf.Dtos;
-using SharpArch.Testing.NUnit;
-
-namespace Tests.Northwind.Wcf
+﻿namespace Tests.Northwind.Wcf
 {
+    using System.Collections.Generic;
+
+    using NUnit.Framework;
+
+    using Rhino.Mocks;
+
+    using SharpArch.Domain.PersistenceSupport;
+    using SharpArch.Testing.NUnit;
+    using SharpArch.Testing.NUnit.Helpers;
+
+    using global::Northwind.Domain;
+    using global::Northwind.WcfServices;
+    using global::Northwind.WcfServices.Dtos;
+
     [TestFixture]
     public class TerritoriesWcfServiceTests
     {

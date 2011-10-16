@@ -6,7 +6,7 @@
     using Northwind.Domain;
     using Northwind.Domain.Contracts.Tasks;
 
-    using SharpArch.Core.PersistenceSupport;
+    using SharpArch.Domain.PersistenceSupport;
 
     public class CategoryTasks : ICategoryTasks
     {

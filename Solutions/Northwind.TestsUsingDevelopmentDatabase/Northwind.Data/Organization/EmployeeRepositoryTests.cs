@@ -4,15 +4,15 @@
 
     using NUnit.Framework;
 
-    using SharpArch.Core.PersistenceSupport;
-    using SharpArch.Data.NHibernate;
+    using SharpArch.Domain.PersistenceSupport;
+    using SharpArch.NHibernate;
     using SharpArch.Testing.NUnit.NHibernate;
 
     [TestFixture]
     [Category("DB Tests")]
     public class EmployeeRepositoryTests : DatabaseRepositoryTestsBase
     {
-        private readonly IRepository<Employee> employeeRepository = new Repository<Employee>();
+        private readonly IRepository<Employee> employeeRepository = new NHibernateRepository<Employee>();
 
         /// <summary>
         ///   WARNING: This is a very fragile test is will likely break over time.  It assumes 

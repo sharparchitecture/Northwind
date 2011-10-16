@@ -4,8 +4,8 @@
 
     using NHibernate.Validator.Constraints;
 
-    using SharpArch.Core;
-    using SharpArch.Core.DomainModel;
+    using SharpArch.Domain;
+    using SharpArch.Domain.DomainModel;
 
     /// <summary>
     ///   I'd like to be perfectly clear that I think assigned IDs are almost always a terrible

@@ -1,12 +1,14 @@
 ﻿using NUnit.Framework;
-using Northwind.Core;
-using SharpArch.Testing;
-using Northwind.Core.Organization;
-using Northwind.Wcf.Dtos;
 using SharpArch.Testing.NUnit;
 
 namespace Tests.Northwind.Wcf.Dtos
 {
+    using SharpArch.Testing.NUnit.Helpers;
+
+    using global::Northwind.Domain;
+    using global::Northwind.Domain.Organization;
+    using global::Northwind.WcfServices.Dtos;
+
     [TestFixture]
     public class TerritoryDtoTests
     {

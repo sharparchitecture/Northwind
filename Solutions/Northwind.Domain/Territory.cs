@@ -9,8 +9,8 @@ namespace Northwind.Domain
 
     using Northwind.Domain.Organization;
 
-    using SharpArch.Core;
-    using SharpArch.Core.DomainModel;
+    using SharpArch.Domain;
+    using SharpArch.Domain.DomainModel;
 
     [Serializable]
     public class Territory : EntityWithTypedId<string>, IHasAssignedId<string>

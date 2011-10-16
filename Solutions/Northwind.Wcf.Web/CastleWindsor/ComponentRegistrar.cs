@@ -5,11 +5,10 @@
 
     using Northwind.WcfServices;
 
-    using SharpArch.Core.PersistenceSupport;
-    using SharpArch.Core.PersistenceSupport.NHibernate;
-    using SharpArch.Data.NHibernate;
-    using SharpArch.Web.Castle;
-
+    using SharpArch.Domain.PersistenceSupport;
+    using SharpArch.NHibernate;
+    using SharpArch.NHibernate.Contracts.Repositories;
+    
     public class ComponentRegistrar
     {
         public static void AddComponentsTo(IWindsorContainer container)
@@ -22,17 +21,16 @@
         private static void AddCustomRepositoriesTo(IWindsorContainer container)
         {
             container.Register(
-                AllTypes.Pick().FromAssemblyNamed("Northwind.Infrastructure").WithService.FirstNonGenericCoreInterface(
-                    "Northwind.Domain"));
+                AllTypes.Pick().FromAssemblyNamed("Northwind.Infrastructure").WithService.DefaultInterface());
         }
 
         private static void AddGenericRepositoriesTo(IWindsorContainer container)
         {
-            container.AddComponent("repositoryType", typeof(IRepository<>), typeof(Repository<>));
+            container.AddComponent("repositoryType", typeof(IRepository<>), typeof(NHibernateRepository<>));
             container.AddComponent(
                 "nhibernateRepositoryType", typeof(INHibernateRepository<>), typeof(NHibernateRepository<>));
             container.AddComponent(
-                "repositoryWithTypedId", typeof(IRepositoryWithTypedId<,>), typeof(RepositoryWithTypedId<,>));
+                "repositoryWithTypedId", typeof(IRepositoryWithTypedId<,>), typeof(NHibernateRepositoryWithTypedId<,>));
             container.AddComponent(
                 "nhibernateRepositoryWithTypedId", 
                 typeof(INHibernateRepositoryWithTypedId<,>), 

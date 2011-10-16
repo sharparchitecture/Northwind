@@ -2,8 +2,8 @@
 {
     using System;
 
-    using SharpArch.Core;
-    using SharpArch.Core.DomainModel;
+    using SharpArch.Domain;
+    using SharpArch.Domain.DomainModel;
 
     [Serializable]
     public class Region : Entity, IHasAssignedId<int>

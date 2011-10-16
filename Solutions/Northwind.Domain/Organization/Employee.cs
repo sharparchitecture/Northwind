@@ -6,8 +6,8 @@ namespace Northwind.Domain.Organization
     using Newtonsoft.Json;
     using NHibernate.Validator.Constraints;
 
-    using SharpArch.Core.DomainModel;
-    using SharpArch.Core.NHibernateValidator;
+    using SharpArch.Domain.DomainModel;
+    using SharpArch.NHibernate.NHibernateValidator;
 
     /// <summary>
     ///   The domain signature of this object isn't very realistic as you'll likely have same named 
@@ -17,7 +17,7 @@ namespace Northwind.Domain.Organization
     ///   compare the object references themselves.
     /// </summary>
     [Serializable]
-    [HasUniqueDomainSignature(Message = "An employee already exists with the same first and last name")]
+    [HasUniqueDomainSignature(ErrorMessage = "An employee already exists with the same first and last name")]
     public class Employee : Entity
     {
         public Employee()
@@ -59,13 +59,7 @@ namespace Northwind.Domain.Organization
         {
             get { return IsValid(); }
         }
-
-        [JsonProperty]
-        public virtual ICollection<SharpArch.Core.CommonValidator.IValidationResult> ValidationResultsJson
-        {
-            get { return ValidationResults(); }
-        }
-
+        
         private void InitMembers()
         {
             // Init the collection so it's never null

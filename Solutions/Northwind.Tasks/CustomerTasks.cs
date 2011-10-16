@@ -6,7 +6,7 @@
     using Northwind.Domain.Contracts;
     using Northwind.Domain.Contracts.Tasks;
 
-    using SharpArch.Core;
+    using SharpArch.Domain;
 
     public class CustomerTasks : ICustomerTasks
     {
@@ -23,7 +23,7 @@
             customerToCreate.SetAssignedIdTo(assignedId);
 
             this.customerRepository.DbContext.BeginTransaction();
-            this.customerRepository.Save(customerToCreate);
+            this.customerRepository.SaveOrUpdate(customerToCreate);
             this.customerRepository.DbContext.CommitTransaction();
 
             return customerToCreate;

@@ -4,7 +4,7 @@
 
     using NHibernate.Validator.Constraints;
 
-    using SharpArch.Core.DomainModel;
+    using SharpArch.Domain.DomainModel;
 
     public class Supplier : Entity
     {

@@ -4,15 +4,15 @@
 
     using NUnit.Framework;
 
-    using SharpArch.Core.PersistenceSupport;
-    using SharpArch.Data.NHibernate;
+    using SharpArch.Domain.PersistenceSupport;
+    using SharpArch.NHibernate;
     using SharpArch.Testing.NUnit.NHibernate;
 
     [TestFixture]
     [Category("DB Tests")]
     public class CategoryRepositoryTests : DatabaseRepositoryTestsBase
     {
-        private readonly IRepository<Category> categoryRepository = new Repository<Category>();
+        private readonly IRepository<Category> categoryRepository = new NHibernateRepository<Category>();
 
         [Test]
         public void CanGetAllCategories()

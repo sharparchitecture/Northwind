@@ -5,7 +5,7 @@ namespace Northwind.Tasks
     using Domain;
     using Domain.Contracts;
     using Domain.Contracts.Tasks;
-    using SharpArch.Core;
+    using SharpArch.Domain;
 
     /// <summary>
     ///   This is an "application service" for coordinating the activities required by the view.

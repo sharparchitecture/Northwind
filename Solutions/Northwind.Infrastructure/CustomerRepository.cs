@@ -7,7 +7,7 @@
     using Northwind.Domain;
     using Northwind.Domain.Contracts;
 
-    using SharpArch.Data.NHibernate;
+    using SharpArch.NHibernate;
 
     public class CustomerRepository : NHibernateRepositoryWithTypedId<Customer, string>, ICustomerRepository
     {

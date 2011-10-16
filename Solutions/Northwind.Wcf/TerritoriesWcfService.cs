@@ -5,8 +5,8 @@
     using Northwind.Domain;
     using Northwind.WcfServices.Dtos;
 
-    using SharpArch.Core;
-    using SharpArch.Core.PersistenceSupport;
+    using SharpArch.Domain;
+    using SharpArch.Domain.PersistenceSupport;
 
     /// <summary>
     ///   Concrete implementation of the service.

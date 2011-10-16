@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using SharpArch.Core.PersistenceSupport;
+    using SharpArch.Domain.PersistenceSupport;
 
     public interface ISupplierRepository : IRepository<Supplier>
     {

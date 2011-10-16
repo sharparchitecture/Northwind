@@ -8,8 +8,8 @@ namespace Northwind.Tasks
     using Northwind.Domain.Contracts.Tasks;
     using Northwind.Domain.Organization;
 
-    using SharpArch.Core;
-    using SharpArch.Core.PersistenceSupport;
+    using SharpArch.Domain;
+    using SharpArch.Domain.PersistenceSupport;
 
     public class EmployeeTasks : IEmployeeTasks
     {

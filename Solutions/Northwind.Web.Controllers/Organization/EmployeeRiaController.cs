@@ -5,8 +5,9 @@ namespace Northwind.Web.Controllers.Organization
 {
     using System.Web.Mvc;
     using Domain.Contracts.Tasks;
-    using SharpArch.Web.JsonNet;
-    using SharpArch.Web.NHibernate;
+
+    using SharpArch.NHibernate.Web.Mvc;
+    using SharpArch.Web.Mvc.JsonNet;
     using ViewModels;
 
     [HandleError]

@@ -8,8 +8,8 @@ namespace Northwind.Infrastructure.NHibernateMaps
     using Northwind.Domain;
     using Northwind.Infrastructure.NHibernateMaps.Conventions;
 
-    using SharpArch.Core.DomainModel;
-    using SharpArch.Data.NHibernate.FluentNHibernate;
+    using SharpArch.Domain.DomainModel;
+    using SharpArch.NHibernate.FluentNHibernate;
 
     public class AutoPersistenceModelGenerator : IAutoPersistenceModelGenerator
     {

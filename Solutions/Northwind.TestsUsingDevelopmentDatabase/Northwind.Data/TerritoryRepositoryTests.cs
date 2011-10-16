@@ -4,8 +4,8 @@
 
     using NUnit.Framework;
 
-    using SharpArch.Core.PersistenceSupport;
-    using SharpArch.Data.NHibernate;
+    using SharpArch.Domain.PersistenceSupport;
+    using SharpArch.NHibernate;
     using SharpArch.Testing.NUnit.NHibernate;
 
     [TestFixture]
@@ -13,7 +13,7 @@
     public class TerritoryRepositoryTests : DatabaseRepositoryTestsBase
     {
         private readonly IRepositoryWithTypedId<Territory, string> territoryRepository =
-            new RepositoryWithTypedId<Territory, string>();
+            new NHibernateRepositoryWithTypedId<Territory, string>();
 
         /// <summary>
         ///   WARNING: This is a very fragile test is will likely break over time.  It assumes 

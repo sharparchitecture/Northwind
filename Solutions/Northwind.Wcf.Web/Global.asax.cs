@@ -13,8 +13,8 @@
     using Northwind.Infrastructure.NHibernateMaps;
     using Northwind.Wcf.Web.CastleWindsor;
 
-    using SharpArch.Data.NHibernate;
-    using SharpArch.Wcf.NHibernate;
+    using SharpArch.NHibernate;
+    using SharpArch.NHibernate.Wcf;
 
     public class Global : HttpApplication
     {

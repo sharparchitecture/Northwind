@@ -7,8 +7,8 @@ namespace Northwind.Web.Controllers.Organization
     using Northwind.Domain.Contracts.Tasks;
     using Northwind.Domain.Organization;
 
-    using SharpArch.Web.ModelBinder;
-    using SharpArch.Web.NHibernate;
+    using SharpArch.NHibernate.Web.Mvc;
+    using SharpArch.Web.Mvc.ModelBinder;
 
     [HandleError]
     public class EmployeesController : Controller

@@ -2,7 +2,7 @@
 {
     using Domain.Contracts.Tasks;
     using System.Web.Mvc;
-    using SharpArch.Core;
+    using SharpArch.Domain;
 
     public class DashboardController : Controller
     {

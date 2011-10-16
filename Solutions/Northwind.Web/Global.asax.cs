@@ -10,21 +10,20 @@
 
     using CommonServiceLocator.WindsorAdapter;
 
+    using Northwind.Infrastructure.NHibernateMaps;
+
+    using SharpArch.NHibernate.Web.Mvc;
+    using SharpArch.Web.Mvc.Castle;
+    using SharpArch.Web.Mvc.ModelBinder;
+
     using log4net.Config;
 
     using Microsoft.Practices.ServiceLocation;
 
-    using MvcContrib.Castle;
-
-    using Northwind.Infrastructure.NHibernateMaps;
     using Northwind.Web.CastleWindsor;
     using Northwind.Web.Controllers;
 
-    using SharpArch.Core.NHibernateValidator.ValidatorProvider;
-    using SharpArch.Data.NHibernate;
-    using SharpArch.Web.Areas;
-    using SharpArch.Web.ModelBinder;
-    using SharpArch.Web.NHibernate;
+    using SharpArch.NHibernate;
 
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
@@ -62,12 +61,9 @@
             XmlConfigurator.Configure();
 
             ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new AreaViewEngine());
-
+            
             DataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes = false;
-            ModelValidatorProviders.Providers.Add(new NHibernateValidatorProvider()); // Server side validation provider
-            ModelValidatorProviders.Providers.Add(new NHibernateValidatorClientProvider());
-
+            
             // Client side validation provider
             ModelBinders.Binders.DefaultBinder = new SharpModelBinder();
 

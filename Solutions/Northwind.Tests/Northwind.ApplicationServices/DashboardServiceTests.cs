@@ -1,21 +1,26 @@
-﻿using Northwind.Core.DataInterfaces;
-using NUnit.Framework;
-using Northwind.Core;
-using Rhino.Mocks;
-using System.Collections.Generic;
-using Northwind.ApplicationServices;
-using SharpArch.Testing.NUnit;
-
-namespace Tests.Northwind.ApplicationServices
+﻿namespace Tests.Northwind.ApplicationServices
 {
+    using Rhino.Mocks;
+
+    using SharpArch.Testing.NUnit;
+
+    using global::Northwind.Domain;
+    using global::Northwind.Domain.Contracts;
+    using global::Northwind.Domain.Contracts.Tasks;
+    using global::Northwind.Tasks;
+
+    using NUnit.Framework;
+
+    using System.Collections.Generic;
+
     [TestFixture]
     public class DashboardServiceTests
     {
         [Test]
         public void CanGetDashboardSummary() {
-            DashboardService dashboardService = new DashboardService(CreateMockSupplierRepository());
+            DashboardTasks dashboardService = new DashboardTasks(CreateMockSupplierRepository());
 
-            DashboardService.DashboardSummaryDto summary = dashboardService.GetDashboardSummary();
+            DashboardSummaryDto summary = dashboardService.GetDashboardSummary();
 
             summary.SuppliersCarryingMostProducts.ShouldNotBeNull();
             summary.SuppliersCarryingMostProducts.Count.ShouldEqual(1);

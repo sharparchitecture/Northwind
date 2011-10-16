@@ -8,7 +8,7 @@
     using Northwind.WcfServices;
     using Northwind.WcfServices.Dtos;
 
-    using SharpArch.Core;
+    using SharpArch.Domain;
 
     public class TerritoriesController : Controller
     {

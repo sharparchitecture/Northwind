@@ -9,14 +9,14 @@
 
     using NUnit.Framework;
 
-    using SharpArch.Core;
+    using SharpArch.Domain;
     using SharpArch.Testing.NUnit.NHibernate;
 
     [TestFixture]
     [Category("DB Tests")]
     public class CustomerRepositoryTests : DatabaseRepositoryTestsBase
     {
-        private readonly ICustomerRepository customerRepository = new CustomerRepository();
+        private readonly CustomerRepository customerRepository = new CustomerRepository();
 
         [Test]
         public void CanFindCustomerOrdersViaCustomFilter()

@@ -8,9 +8,9 @@
     using Northwind.Domain;
     using Northwind.Domain.Contracts;
 
-    using SharpArch.Data.NHibernate;
+    using SharpArch.NHibernate;
 
-    public class SupplierRepository : Repository<Supplier>, ISupplierRepository
+    public class SupplierRepository : NHibernateRepository<Supplier>, ISupplierRepository
     {
         /// <summary>
         ///   Uses NHibernate's CreateAlias to create a join query from the <see cref = "Supplier" />

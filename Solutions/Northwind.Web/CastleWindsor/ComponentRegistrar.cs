@@ -3,6 +3,7 @@
     using Castle.Core;
     using Castle.Core.Configuration;
     using Castle.Core.Interceptor;
+    using Castle.DynamicProxy;
     using Castle.Facilities.FactorySupport;
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
@@ -10,12 +11,10 @@
     using Northwind.WcfServices;
     using Northwind.Web.WcfServices;
 
-    using SharpArch.Core.CommonValidator;
-    using SharpArch.Core.NHibernateValidator.CommonValidatorAdapter;
-    using SharpArch.Core.PersistenceSupport;
-    using SharpArch.Core.PersistenceSupport.NHibernate;
-    using SharpArch.Data.NHibernate;
-    using SharpArch.Web.Castle;
+    using SharpArch.Domain.PersistenceSupport;
+    using SharpArch.NHibernate;
+    using SharpArch.NHibernate.Contracts.Repositories;
+    using SharpArch.Web.Mvc.Castle;
 
     public class ComponentRegistrar
     {
@@ -24,8 +23,6 @@
             AddGenericRepositoriesTo(container);
             AddCustomRepositoriesTo(container);
             AddWcfServiceFactoriesTo(container);
-
-            container.AddComponent("validator", typeof(IValidator), typeof(Validator));
         }
 
         private static void AddCustomRepositoriesTo(IWindsorContainer container)
@@ -43,11 +40,11 @@
         {
             container.AddComponent(
                 "entityDuplicateChecker", typeof(IEntityDuplicateChecker), typeof(EntityDuplicateChecker));
-            container.AddComponent("repositoryType", typeof(IRepository<>), typeof(Repository<>));
+            container.AddComponent("repositoryType", typeof(IRepository<>), typeof(NHibernateRepository<>));
             container.AddComponent(
                 "nhibernateRepositoryType", typeof(INHibernateRepository<>), typeof(NHibernateRepository<>));
             container.AddComponent(
-                "repositoryWithTypedId", typeof(IRepositoryWithTypedId<,>), typeof(RepositoryWithTypedId<,>));
+                "repositoryWithTypedId", typeof(IRepositoryWithTypedId<,>), typeof(NHibernateRepositoryWithTypedId<,>));
             container.AddComponent(
                 "nhibernateRepositoryWithTypedId", 
                 typeof(INHibernateRepositoryWithTypedId<,>), 
