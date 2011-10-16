@@ -123,6 +123,9 @@
     <Compile Include="Northwind.Wcf\TerritoriesServiceTests.cs" />
     <Compile Include="Northwind.Web\Controllers\RouteRegistrarTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLocatorHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
