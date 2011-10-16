@@ -17,3 +17,6 @@ _ReSharper.*
 *.dbmdl
 error-*.xml
 Drops
+
+Solutions/AutoTest.config
+Solutions/Northwind_mm_cache.bin
